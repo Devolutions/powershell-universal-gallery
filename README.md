@@ -4,7 +4,7 @@ Public library of modules for PowerShell Universal.
 
 ## What is this repository for?
 
-This repository is a collection of modules that you can use directly with PowerShell Universal. These modules provide pre-built solutions for specific platforms like Azure, Windows and Slack.
+This repository is a collection of modules that you can use directly with PowerShell Universal. These modules provide pre-built solutions for specific platforms like Azure, Windows and Slack. You can download and use this repository as a local resource repository or access these resources from the PowerShell Gallery.
 
 ## Support
 
@@ -57,6 +57,8 @@ Contains scripts that are specific to PowerShell Universal.
 Contains scripts that are specific to Windows environments.
 
 ## Usage
+
+These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. You can also install the repository locally following the instructions below.
 
 ### PowerShell 
 
@@ -127,6 +129,7 @@ Tags, images and description of your module will appear directly in the platform
 
 The following tags are used to categorize modules in PowerShell Universal
 
+- `PowerShellUniversal` - Added to modules that are published to the PowerShell Gallery
 - `script` - Contains a script resource
 - `app` - Contains an App
 - `widget` - Contains one or more Portal Widgets
