@@ -1,0 +1,21 @@
+name: Publish to PowerShell Gallery
+on: 
+  workflow_dispatch:
+    inputs:
+      path:
+        description: 'The path of the module to publish'
+        required: true
+        type: string
+
+jobs:
+    build:
+      name: Build
+      runs-on: [ubuntu-latest]
+      steps:
+        - uses: actions/checkout@v3
+        - name: Publish PowerShell Module
+          uses: natescherer/publish-powershell-action@v1
+          with:
+            token: ${{ secrets.GALLERY_API_KEY }}
+            target: gallery
+            path: ${{ inputs.path }}
