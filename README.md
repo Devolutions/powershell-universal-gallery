@@ -145,3 +145,7 @@ We currently do not require tests but prefer any tests are written in Pester. We
 
 The repository is automatically build using the `build.ps1` script. It finds all PSD1 files and generates nuget packages for each module. These will be stored in the output folder. They should not be checked in. A .gitignore has been created to prevent this.
 
+### Publishing to the PowerShell Gallery 
+
+If you have the permissions to publish to the PowerShell Gallery, run the `Publish to PowerShell Gallery` GitHub Action and specify the folder to publish. For example: `ActiveDirectory/PowerShellUniversal.ActiveDirectory.Scripts/`.
+
