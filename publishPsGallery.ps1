@@ -1,11 +1,8 @@
-Install-Module -Name Microsoft.PowerShell.PSResourceGet -RequiredVersion '1.1.0-rc3' -Force -AllowPrerelease
-
 $InputPath = Join-Path $PSScriptRoot $env:inputpath
 
 $PublishSplat = @{
-    Path       = $InputPath
-    Repository = "PSGallery"
-    ApiKey     = $env:apitoken
+    Path        = $InputPath
+    NuGetApiKey = $env:apitoken
 }
 
-Publish-PSResource @PublishSplat
+Publish-Module @PublishSplat
