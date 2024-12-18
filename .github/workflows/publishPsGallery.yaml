@@ -13,9 +13,9 @@ jobs:
       runs-on: [ubuntu-latest]
       steps:
         - uses: actions/checkout@v3
-        - name: Publish PowerShell Module
-          uses: natescherer/publish-powershell-action@v1
-          with:
-            token: ${{ secrets.GALLERY_API_KEY }}
-            target: gallery
-            path: ${{ inputs.path }}
+        - name: Publish
+          run: .\publish.ps1
+          shell: pwsh
+          env: 
+            apitoken: ${{ secrets.GALLERY_API_KEY }}
+            inputpath: ${{ inputs.path }}
