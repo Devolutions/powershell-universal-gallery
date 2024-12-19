@@ -2,7 +2,7 @@
 
 Active Directory tools built with PowerShell Universal. Reset passwords, restore deleted users, manage group membership and search for objects.
 
-![](https://raw.githubusercontent.com/ironmansoftware/scripts/main/Apps/PowerShell/ActiveDirectory/images/screenshot.png)
+![](https://raw.githubusercontent.com/ironmansoftware/scripts/main/Apps/PowerShellUniversal.Apps.ActiveDirectory/images/screenshot.png)
 
 Active Directory tools built with PowerShell Universal. Reset passwords, restore deleted users, manage group membership and search for objects.
 
@@ -26,7 +26,7 @@ Active Directory tools built with PowerShell Universal. Reset passwords, restore
 
 Reports are scripts that can be run to query Active Directory. All reports support exporting as CSV, Excel, PDF and JSON. Reports can be re-run from the dashboard.
 
-![](https://raw.githubusercontent.com/ironmansoftware/scripts/main/Apps/PowerShell/ActiveDirectory/images/reports-screenshot.png)
+![](https://raw.githubusercontent.com/ironmansoftware/scripts/main/Apps/PowerShellUniversal.Apps.ActiveDirectory/images/reports-screenshot.png)
 
 ### Current Reports Include:
 
