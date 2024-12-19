@@ -11,7 +11,7 @@
         PSData = @{
             Tags        = @('app', 'ActiveDirectory', "PowerShellUniversal")
             LicenseUri  = 'https://github.com/ironmansoftware/scripts/tree/main/LICENSE'
-            ProjectUri  = 'https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.ActiveDirectory'
+            ProjectUri  = 'https://github.com/ironmansoftware/scripts/tree/main/ActiveDirectory/PowerShellUniversal.Apps.ActiveDirectory'
             IconUri     = 'https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png'
             DisplayName = 'Active Directory App'
         } 
