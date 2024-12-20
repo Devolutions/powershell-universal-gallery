@@ -1,0 +1,1 @@
+New-PSUScript -Module "PowerShellUniversal.Triggers.MSTeams" -Command "Send-PSUTeamsNotification"
