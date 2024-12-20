@@ -8,20 +8,11 @@ This repository is a collection of modules that you can use directly with PowerS
 
 ## Support
 
-These scripts are not supported through the general Ironman Software support agreement for PowerShell Universal. Bugs and feature requests should be made through this repository. 
+These modules are not supported through the general Ironman Software support agreement for PowerShell Universal. Bugs and feature requests should be made through this repository. 
 
 ## Usage
 
-These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. You can also install the repository locally following the instructions below.
-
-### PowerShell 
-
-You can use this repository outside of PowerShell Universal by installing the release to your local machine. PowerShell Universal uses PSResourceGet. You will need to install this module.
-
-```powershell
-Install-Module -Name Microsoft.PowerShell.PSResourceGet -Force -SkipPublisherCheck -AllowClobber -Scope CurrentUser -ErrorAction SilentlyContinue
-Register-PSRepository -Name 'PSUScriptLibrary' -SourceLocation 'https://gallery.powershelluniversal.com/feed/index.json'
-```
+These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. 
 
 ### PowerShell Universal v5
 
@@ -39,35 +30,11 @@ Solutions installed from the gallery will appear in the Modules page and their r
 
 This repository can be installed with PowerShell Universal v4 by registering it as a module repository.
  
-#### Installation
-
-PowerShell Universal uses PSResourceGet. You will need to install this module.
-
-```powershell
-Install-Module -Name Microsoft.PowerShell.PSResourceGet -Force -SkipPublisherCheck -AllowClobber -Scope CurrentUser -ErrorAction SilentlyContinue
-```
-
-To install this repository with PowerShell Universal v4, you can use the following command.
-
-```powershell
-Register-PSRepository -Name 'PSUScriptLibrary' -SourceLocation 'https://gallery.powershelluniversal.com/feed/index.json'
-```
-
 #### Add Resources to PSU
 
-You can add resources found in this gallery to your PSU instance by visiting the modules page.  Click Platform \ Modules \ Repositories and select the PSUScriptLibrary repository.
+You can add resources found in this gallery to your PSU instance by visiting the modules page.  Click Platform \ Modules \ Repositories and select the PSGallery repository.
 
 ![](/images/modules.png)
-
-### Offline Installation
-
-To install this repository offline, you can download the repository and register a folder a provider. 
-
-```powershell
-Invoke-WebRequest -Uri 'https://github.com/ironmansoftware/gallery/releases/download/1.0.0/library.zip' -OutFile 'library.zip'
-Expand-Archive -Path 'library.zip' -DestinationPath 'C:\gallery'
-Register-PSRepository -Name 'PSUScriptLibrary' -SourceLocation 'C:\gallery'
-```
 
 ## Contribution guidelines
 
@@ -106,19 +73,15 @@ PowerShellUniversal.Triggers.Slack
 PowerShellUniversal.Widgets.Weather
 ```
 
-Some modules do not follow this convention but we recommend it for discoverability.
+Some modules do not follow this convention, but we recommend it for discoverability.
 
 ### Documentation
 
-We prefer that you include comment based help. A `readme.md` is also useful to better describe your module or solution. The readme content will be displayed in PowerShell Universal.
+We prefer that you include comment based help. A `readme.md` is also useful to better describe your module or solution. The readme content will be displayed in PowerShell Universal and the PowerShell Universal Gallery.
 
 ### Tests
 
 We currently do not require tests but prefer any tests are written in Pester. We will run these tests during CI builds.
-
-### Building
-
-The repository is automatically build using the `build.ps1` script. It finds all PSD1 files and generates nuget packages for each module. These will be stored in the output folder. They should not be checked in. A .gitignore has been created to prevent this.
 
 ### Publishing to the PowerShell Gallery 
 
