@@ -10,52 +10,6 @@ This repository is a collection of modules that you can use directly with PowerS
 
 These scripts are not supported through the general Ironman Software support agreement for PowerShell Universal. Bugs and feature requests should be made through this repository. 
 
-## Categories
-
-### [Active Directory](/ActiveDirectory)
-
-Contains scripts and widgets that are specific to Active Directory.
-
-### [Apps](/Apps)
-
-Contains full apps that can be run with PowerShell Universal.
-
-### [Diagnostics](/Diagnostics)
-
-Diagnostic tools for PowerShell Universal.
-
-### [Graph](/Graph)
-
-Contains scripts that interact with the Microsoft Graph.
-
-### [Misc](/Misc)
-
-Miscellaneous scripts, such as weather components.
-
-### [Notifications](/Notifications)
-
-Contains scripts that can be used to send notifications like email and chat apps.
-
-### [Office](/Office)
-
-Contains scripts that interact with Microsoft Office products.
-
-### [PowerShell](/PowerShell)
-
-Contains general purpose PowerShell scripts and widgets.
-
-### [System](/System)
-
-Contains scripts and widgets that return information about the system.
-
-### [Universal](/Universal)
-
-Contains scripts that are specific to PowerShell Universal.
-
-### [Windows](/Windows)
-
-Contains scripts that are specific to Windows environments.
-
 ## Usage
 
 These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. You can also install the repository locally following the instructions below.
