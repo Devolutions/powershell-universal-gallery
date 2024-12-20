@@ -1,4 +1,11 @@
 function New-NetworkUtilityApp {
+    <#
+    .SYNOPSIS
+    Creates a new network utility app.
+    
+    .DESCRIPTION
+    Creates a new network utility app.
+    #>
     $AppRoot = $PSScriptRoot
 
     New-UDApp -Title 'Network Utilities' -Content {

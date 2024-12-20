@@ -14,4 +14,4 @@ Displays a card that allows for generating different types of random data. This 
 - List item
 - Powerball Numbers
 
-![Weather Card](https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/Misc/Random.Apps.png)
+![Random Card](https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/Misc/Random.Apps.png)

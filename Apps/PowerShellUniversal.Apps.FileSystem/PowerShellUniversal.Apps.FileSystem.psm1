@@ -1,4 +1,19 @@
 function New-UDFileSystemBrowser {
+    <#
+    .SYNOPSIS
+    Creates a new file system browser based on a published folder.
+    
+    .DESCRIPTION
+    Creates a new file system browser based on a published folder.
+    
+    .PARAMETER PublishedFolder
+    The name of the published folder to display.
+    
+    .EXAMPLE
+    PS > New-UDFileSystemBrowser -PublishedFolder 'Scripts'
+
+    Creates a new file system browser based on the 'Scripts' published folder.
+    #>
     param(
         [Parameter(Mandatory)]
         [string]$PublishedFolder

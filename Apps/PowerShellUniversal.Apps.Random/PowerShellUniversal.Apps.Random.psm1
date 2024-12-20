@@ -1,5 +1,32 @@
 
 function New-UDRandomPassword {
+    <#
+    .SYNOPSIS
+    Creates a new random password.
+    
+    .DESCRIPTION
+    Creates a new random password.
+    
+    .PARAMETER Length
+    The length of the password.
+    
+    .PARAMETER IncludeUppercase
+    Whether to include uppercase characters.
+    
+    .PARAMETER IncludeLowercase
+    Whether to include lowercase characters.
+    
+    .PARAMETER IncludeNumbers
+    Whether to include numbers.
+    
+    .PARAMETER IncludeSpecialCharacters
+    Whether to include special characters.
+    
+    .EXAMPLE
+    PS > New-UDRandomPassword -Length 16 -IncludeUppercase -IncludeLowercase -IncludeNumbers -IncludeSpecialCharacters
+
+    Creates a new random password that is 16 characters long and includes uppercase, lowercase, numbers and special characters.
+    #>
     param(
         [int]$Length = 12,
         [switch]$IncludeUppercase,
@@ -40,6 +67,21 @@ function New-UDRandomPowerballNumbers {
 }
 
 function New-UDRandom {
+    <#
+    .SYNOPSIS
+    Creates a new random tool.
+    
+    .DESCRIPTION
+    Creates a new random tool.
+    
+    .PARAMETER Tools
+    The tools to include.
+    
+    .EXAMPLE
+    PS > New-UDRandom -Tools @("Powerball")
+
+    Creates a new random tool that is a Powerball number generator.
+    #>
     param(
         [Parameter()]
         [string[]]$Tools = @("Password", "GUID", "Number", "ListItem", "Powerball")
