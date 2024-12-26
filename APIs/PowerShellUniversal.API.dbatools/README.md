@@ -28,8 +28,41 @@ To use this API, you will need to create a `PSD1` file in the root for the Power
 
 #### `GET|/api/dbatools/:sqlinstance/database`
 Returns a list of databases on the specified SQL instance.
+
 - Required Role: `dbatools Administrator` or `Administrator`
 - Underlying Command: [`Get-DbaDatabase`](https://docs.dbatools.io/Get-DbaDatabase)
+
+#### `GET|/api/dbatools/:sqlinstance/database/:database/schema`
+Finds the database schema SMO object(s) based on the given filter params.
+
+- Required Role: `dbatools Administrator` or `Administrator`
+- Underlying Command: [`Get-DbaDbSchema`](https://docs.dbatools.io/Get-DbaDbSchema)
+
+#### `GET|/api/dbatools/:sqlinstance/database/:database/space`
+Returns the space used by the specified database.
+
+- Required Role: `dbatools Administrator` or `Administrator`
+- Underlying Command: [`Get-DbaDbSpace`](https://docs.dbatools.io/Get-DbaDbSpace)
+
+#### `GET|/api/dbatools/:sqlinstance/database/:database/state`
+Gets various options for databases, hereby called "states"
+
+- Required Role: `dbatools Administrator` or `Administrator`
+- Underlying Command: [`Get-DbaDbState`](https://docs.dbatools.io/Get-DbaDbState)
+
+#### `GET|/api/dbatools/:sqlinstance/database/:database/storedprocedure`
+Gets database Stored Procedures
+
+- Required Role: `dbatools Administrator` or `Administrator`
+- Underlying Command: [`Get-DbaDbStoredProcedure`](https://docs.dbatools.io/Get-DbaDbStoredProcedure)
+
+### Utilities
+
+#### `POST|/api/dbatools/:sqlinstance/database/:database/query`
+Executes a query against the specified database.
+
+- Required Role: `dbatools Administrator` or `Administrator`
+- Underlying Command: [`Invoke-DbaQuery`](https://docs.dbatools.io/Invoke-DbaQuery)
 
 ## Roles
 
