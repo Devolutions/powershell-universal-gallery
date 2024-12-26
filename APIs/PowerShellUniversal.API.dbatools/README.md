@@ -1,6 +1,6 @@
-# dbatools HTTP REST API
+# [dbatools](https://docs.dbatools.io/) HTTP REST API
 
-This API is a REST API for dbatools. It is built on top of PowerShell Universal and provides a way to interact with dbatools using HTTP requests.
+This API is a REST API for [dbatools](https://docs.dbatools.io/). It is built on top of PowerShell Universal and provides a way to interact with dbatools using HTTP requests.
 
 ## Usage
 
