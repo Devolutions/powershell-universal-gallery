@@ -1,0 +1,1 @@
+New-PSURole -Name 'dbatools Administrator' -Description "Role for dbatools administrators" 

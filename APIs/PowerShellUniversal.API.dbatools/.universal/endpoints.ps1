@@ -1,0 +1,1 @@
+﻿New-PSUEndpoint -Url '/api/dbatools/:sqlinstance/database' -Module 'PowerShellUniversal.API.dbatools' -Command 'Get-DbaApiDatabase' -Authenticated -Roles @("dbatools Administrator", "Administrator")
