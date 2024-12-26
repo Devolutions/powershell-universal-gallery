@@ -1,1 +1,1 @@
-New-PSUEndpointDocumentation -Name 'dbatools' -Description 'Documentation for the dbatools API.' -Url '/api/dbatools/docs' -Authenticated
+New-PSUEndpointDocumentation -Name 'dbatools' -Description 'Documentation for the dbatools API.' -Url '/api/dbatools/docs' -Authentication

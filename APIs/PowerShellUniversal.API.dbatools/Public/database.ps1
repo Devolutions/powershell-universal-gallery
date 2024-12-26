@@ -102,17 +102,19 @@ function Get-DbaApiDbSpace {
 
     Get-DbaDbSpace @Parameters | ForEach-Object {
         [PSCustomObject]@{
-            ComputerName = $_.ComputerName
-            SqlInstance  = $_.SqlInstance
-            Database     = $_.Database
-            Name         = $_.Name
-            SizeMB       = $_.SizeMB
-            UsedMB       = $_.UsedMB
-            FreeMB       = $_.FreeMB
-            PercentUsed  = $_.PercentUsed
-            AutoGrowth   = $_.AutoGrowth
-            DataFiles    = $_.DataFiles
-            LogFiles     = $_.LogFiles
+            ComputerName      = $_.ComputerName
+            SqlInstance       = $_.SqlInstance
+            Database          = $_.Database
+            UsedSpace         = $_.UsedSpace
+            FreeSpace         = $_.FreeSpace
+            FileSize          = $_.FileSize
+            PercentUsed       = $_.PercentUsed
+            AutoGrowth        = $_.AutoGrowth
+            SpaceUntilMaxSize = $_.SpaceUntilMaxSize
+            UnusableSpace     = $_.UnusableSpace
+            FileName          = $_.FileName
+            FileType          = $_.FileType
+            PhysicalName      = $_.PhysicalName
         }
     }
 }
@@ -159,14 +161,7 @@ function Get-DbaApiDbState {
         $Parameters.SqlCredential = Get-Item "Secret:\$($Instance.Credential)"
     }
 
-    Get-DbaDbState @Parameters | ForEach-Object {
-        [PSCustomObject]@{
-            ComputerName = $_.ComputerName
-            SqlInstance  = $_.SqlInstance
-            Database     = $_.Database
-            State        = $_.State
-        }
-    }
+    Get-DbaDbState @Parameters 
 }
 
 function Get-DbaApiDbSchema {
@@ -271,17 +266,18 @@ function Get-DbaApiDbTable {
 
     Get-DbaDbTable @Parameters | ForEach-Object {
         [PSCustomObject]@{
-            ComputerName = $_.ComputerName
-            SqlInstance  = $_.SqlInstance
-            Database     = $_.Database
-            Schema       = $_.Schema
-            Name         = $_.Name
-            Created      = $_.Created
-            Modified     = $_.Modified
-            Rows         = $_.Rows
-            DataSpace    = $_.DataSpace
-            IndexSpace   = $_.IndexSpace
-            UnusedSpace  = $_.UnusedSpace
+            ComputerName      = $_.ComputerName
+            SqlInstance       = $_.SqlInstance
+            Database          = $_.Database
+            Schema            = $_.Schema
+            Name              = $_.Name
+            IndexSpaceUsed    = $_.IndexSpaceUsed
+            DataSpaceUsed     = $_.DataSpaceUsed
+            RowCount          = $_.RowCount
+            HasClusteredIndex = $_.HasClusteredIndex
+            IsFileTable       = $_.IsFileTable
+            IsMemoryOptimized = $_.IsMemoryOptimized
+            IsPartitioned     = $_.IsPartitioned
         }
     }
 }
@@ -348,7 +344,7 @@ function Get-DbaApiDbStoredProcedure {
     }
 }
 
-function Get-PSUDbaApiDbView {
+function Get-DbaApiDbView {
     <#
     .SYNOPSIS
     Returns the views of a database.
@@ -465,10 +461,9 @@ function Get-DbaApiDbMemoryUsage {
             ComputerName = $_.ComputerName
             SqlInstance  = $_.SqlInstance
             Database     = $_.Database
-            BufferPool   = $_.BufferPool
-            PlanCache    = $_.PlanCache
-            ColumnStore  = $_.ColumnStore
-            InMemory     = $_.InMemory
+            PageType     = $_.PageType
+            PercentUsed  = $_.PercentUsed
+            Size         = $_.Size
         }
     }
 }

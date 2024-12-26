@@ -10,7 +10,13 @@
     FunctionsToExport = @(
         'Get-DbaApiDatabase',
         'Get-DbaApiSqlInstance',
-        'Import-DbaApiConfiguration'
+        'Import-DbaApiConfiguration',
+        'Get-DbaApiDbMemoryUsage',
+        'Get-DbaApiDbSpace',
+        'Get-DbaApiDbState',
+        'Get-DbaApiDbTable',
+        'Get-DbaApiDbView',
+        'Invoke-DbaApiQuery'
     )
     PrivateData       = @{
         PSData = @{

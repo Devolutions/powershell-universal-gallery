@@ -2,6 +2,8 @@
 
 This API is a REST API for [dbatools](https://docs.dbatools.io/). It is built on top of PowerShell Universal and provides a way to interact with dbatools using HTTP requests.
 
+![](https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/APIs/dbatools.api.png)
+
 ## Usage
 
 Installing this module in your PowerShell Universal environment will expose the API at the `/api/dbatools` endpoints. Once installed and configured, you will be able to interact with the API using HTTP requests.

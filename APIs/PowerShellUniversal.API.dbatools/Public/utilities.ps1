@@ -9,7 +9,7 @@ function Invoke-DbaApiQuery {
     .PARAMETER SqlQuery
     The T-SQL query to run.
     
-    .PARAMETER ServerInstance
+    .PARAMETER SqlInstance
     The server instance to run the query against.
     
     .PARAMETER Database
@@ -28,7 +28,7 @@ function Invoke-DbaApiQuery {
         [Parameter(Mandatory)]
         [string]$SqlQuery,
         [Parameter(Mandatory)]
-        [string]$ServerInstance,
+        [string]$SqlInstance,
         [Parameter(Mandatory)]
         [string]$Database,
         [Parameter()]
