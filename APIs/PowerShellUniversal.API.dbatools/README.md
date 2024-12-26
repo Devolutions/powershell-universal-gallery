@@ -2,6 +2,10 @@
 
 This API is a REST API for dbatools. It is built on top of PowerShell Universal and provides a way to interact with dbatools using HTTP requests.
 
+## Usage
+
+Installing this module in your PowerShell Universal environment will expose the API at the `/api/dbatools` endpoints. Once installed and configured, you will be able to interact with the API using HTTP requests.
+
 ## Configuration
 
 To use this API, you will need to create a `PSD1` file in the root for the PowerShell Universal repository named `DbaApiConfig.psd1`. This file should contain the following configuration:
