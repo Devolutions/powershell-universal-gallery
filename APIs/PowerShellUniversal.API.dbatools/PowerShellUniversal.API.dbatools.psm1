@@ -8,6 +8,16 @@
     
     .PARAMETER SqlInstance
     The SQL instance to query.
+
+    .EXAMPLE
+    PS > Invoke-RestMethod -Uri 'http://localhost:5000/api/dbatools/Instance1/database'
+
+    Returns a list of databases for the SQL instance named Instance1.
+
+    .EXAMPLE
+    PS > Invoke-RestMethod -Uri 'http://localhost:5000/api/dbatools/Instance1/database?Database=master'
+
+    Returns a list of databases for the SQL instance named Instance1 where the database name is master.
     #>
     param(
         [Parameter(Mandatory)]
@@ -21,7 +31,19 @@
         New-PSUApiResponse -StatusCode 404
     }
 
-    Get-DbaDatabase -SqlInstance $Instance | ForEach-Object {
+    $Parameters = @{
+        SqlInstance = $Instance.SqlInstance
+    }
+
+    if ($Instance.Credential) {
+        $Parameters.SqlCredential = Get-Item "Secret:\$($Instance.Credential)"
+    }
+
+    if ($Query.Database) {
+        $Parameters.Database = $Query.Database
+    }
+
+    Get-DbaDatabase @Parameters | ForEach-Object {
         [PSCustomObject]@{
             ComputerName  = $_.ComputerName
             Name          = $_.Name
@@ -58,7 +80,7 @@ function Get-DbaApiSqlInstance {
         throw 'Unknown SQL instance'
     }
 
-    $Instance.ConnectionString
+    $Instance
 }
 
 function Import-DbaApiConfiguration {
@@ -67,7 +89,8 @@ function Import-DbaApiConfiguration {
             SqlInstances = @(
                 @{
                     "Name" = "Instance1"
-                    "ConnectionString" = "Server=ADAMDESK2;Database=PSU;Trusted_Connection=True;TrustServerCertificate=True"
+                    "SqlInstance" = "Server=ADAMDESK2;Database=PSU;Trusted_Connection=True;TrustServerCertificate=True"
+                    "Credential" = "DbCredential"
                 }
             )
         }
