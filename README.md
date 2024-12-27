@@ -12,7 +12,7 @@ These modules are not supported through the general Ironman Software support agr
 
 ## Usage
 
-These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. 
+These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. You do not need to contribute to this repository to provide modules that will surface on the PowerShell Gallery or within PowerShell Universal. If you use the `PowerShellUniversal` tag in your module manifest, they will appear in both places. 
 
 ### PowerShell Universal v5
 
