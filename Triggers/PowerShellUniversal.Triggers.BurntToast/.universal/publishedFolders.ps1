@@ -1,0 +1,1 @@
+﻿New-PSUPublishedFolder -RequestPath "/burnttoast" -Path "/burnttoast" -Name "BurntToast Client"

@@ -1,0 +1,1 @@
+﻿New-PSUEventHub -Name "BurntToast" -Description "A hub used for sending BurntToast notifications. "
