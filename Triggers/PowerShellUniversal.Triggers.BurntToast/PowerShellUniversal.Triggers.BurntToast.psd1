@@ -4,7 +4,6 @@
     ModuleVersion     = "1.0.0"
     Author            = "Ironman Software"
     Copyright         = "Ironman Software"
-    Company           = "Ironman Software"
     GUID              = "30fa0fc5-de8d-4f20-8bbf-8ec79d961f3b"
     FunctionsToExport = @('Send-PSUBTNotification', 'Invoke-PSUBTTrigger')
     RequiredModules   = @('BurntToast')

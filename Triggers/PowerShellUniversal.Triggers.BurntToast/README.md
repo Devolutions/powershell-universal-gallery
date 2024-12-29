@@ -6,6 +6,7 @@ This module provides a way to send BurntToast notifications to client machines f
 
 - [BurntToast](https://www.powershellgallery.com/packages/BurntToast)
 - [PowerShell Universal License](https://powershelluniversal.com/pricing)
+- [Permissive Security](https://docs.powershelluniversal.com/config/module#integrated-mode)
 
 ## Configuration 
 

@@ -44,14 +44,14 @@ function Send-PSUBTNotification {
     }
 
     if ($Computer) {
-        Invoke-PSUCommand -Computer $Computer -Command "New-BurntToastNotification" @Parameters
+        Invoke-PSUCommand -Hub 'BurntToast' -Computer $Computer -Command "New-BurntToastNotification" -Parameters $Parameters -Integrated
     }
     else {
-        $Connection = Get-PSUEventHubConnection -Active | Where-Object UserName -eq $User
+        $Connection = Get-PSUEventHubConnection -Active -Integrated | Where-Object RemoteUserName -eq $User
         if (-not $Connection) {
             throw "Connection for user $User not found";
         }
 
-        Invoke-PSUCommand -ConnectionId $Connection.Id -Command "New-BurntToastNotification" @Parameters
+        Invoke-PSUCommand -Hub 'BurntToast' -ConnectionId $Connection.ConnectionId -Command "New-BurntToastNotification" -Parameters $Parameters -Integrated
     }
 }
