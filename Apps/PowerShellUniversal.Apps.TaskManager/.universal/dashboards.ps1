@@ -1,0 +1,1 @@
+﻿New-PSUApp -Name "Task Manager" -Command 'New-PSUTaskManagerApp' -Module 'PowerShellUniversal.Apps.TaskManager' -BaseUrl "/task-manager" -Authenticated -AutoDeploy -Description "View processes, user sessions, performance and services. "
