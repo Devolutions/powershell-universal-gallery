@@ -534,7 +534,7 @@ function New-PSUThemeBuilderApp {
         }
     }
     
-    New-UDApp -Content {
+    New-UDApp -Title 'Theme Builder' -Content {
         $Session:Theme = $ThemeSchema
     
         New-UDRow -Columns {
