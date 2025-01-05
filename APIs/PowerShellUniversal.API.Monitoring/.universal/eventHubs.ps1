@@ -1,0 +1,1 @@
+﻿New-PSUEventHub -Name "Monitoring" -Description "An event hub for collecting monitor data."
