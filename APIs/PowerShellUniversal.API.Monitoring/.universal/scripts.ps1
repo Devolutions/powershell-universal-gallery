@@ -1,0 +1,1 @@
+﻿New-PSUScript -Name "Invoke-Collect.ps1" -Description "Invoke-Collect.ps1" -Path "Invoke-Collect.ps1"
