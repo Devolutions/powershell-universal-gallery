@@ -108,4 +108,30 @@ Show-UDThemeColorViewer
 
 Converts an object to JSON.
 
+### React Component Project Commands 
+
+These commands require Node.js to be installed on your machine.
+
+### `New-UDReactComponent`
+
+Creates a new React component project.
+
 ```powershell
+New-UDReactComponent -Name 'MyComponent' -Path 'C:\MyComponent'
+```
+
+### `Add-UDReactComponentLibrary` 
+
+Adds a React component library to a project.
+
+```powershell
+Add-UDReactComponentLibrary -Library 'react-icons' -Path 'C:\MyComponent'
+```
+
+### `Invoke-UDReactComponentBuild`
+
+Builds a React component project.
+
+```powershell
+Invoke-UDReactComponentBuild -Path 'C:\MyComponent' -OutputPath 'C:\MyComponent\dist'
+```
