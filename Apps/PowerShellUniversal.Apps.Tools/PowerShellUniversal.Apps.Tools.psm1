@@ -581,3 +581,184 @@ Function ConvertTo-UDJson {
         }
     }
 }
+
+function New-UDReactComponent {
+    <#
+    .SYNOPSIS
+    Creates a new PowerShell Universal React component.
+    
+    .DESCRIPTION
+    The New-UDReactComponent function creates a new PowerShell Universal React component. It creates a new directory with the specified name and copies the React template files to the directory. The function also creates a new module manifest and module script file for the component.
+    
+    .PARAMETER Name
+    The name of the component.
+    
+    .PARAMETER Path
+    The path to create the component.
+    
+    .EXAMPLE
+    New-UDReactComponent -Name "react-icons" -Path "$PSScriptRoot\project"
+    #>
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Name,
+        [Parameter(Mandatory = $true)]
+        [string]$Path
+    )
+
+    $NPM = Get-Command "npm" -ErrorAction SilentlyContinue 
+    if (-not $NPM) {
+        throw "NodeJS is not installed. Please install npm to use New-UDReactComponent."
+    }
+
+    if ((Test-Path $Path)) {
+        throw "Path $Path already exists."
+    }
+
+    New-Item -ItemType Directory -Path $Path | Out-Null
+    Copy-Item "$PSScriptRoot\ReactTemplate\*.*" -Destination $Path -Recurse
+
+    $TemplateFiles = @("package.json", "index.js", "webpack.config.js")
+
+    foreach ($TemplateFile in $TemplateFiles) {
+        $Content = Get-Content "$Path\$TemplateFile"
+        $Content = $Content -replace '{COMPONENT_NAME}', $Name
+        Set-Content -Path "$Path\$TemplateFile" -Value $Content
+    }
+
+    New-ModuleManifest -Path "$Path\$Name.psd1" -RootModule "$Name.psm1"
+    $ModuleContent = {
+        $IndexJs = Get-ChildItem "$PSScriptRoot\index.*.bundle.js"
+        $AssetId = [UniversalDashboard.Services.AssetService]::Instance.RegisterAsset($IndexJs.FullName)
+        function New-UDComponent {
+            param(
+                [string]$Id = (New-Guid).ToString()
+            )
+            @{
+                assetId  = $AssetId 
+                isPlugin = $true 
+                type     = "{COMPONENT_NAME}"
+                id       = $Id
+            }
+        }
+    }.ToString()
+
+    $ModuleContent = $ModuleContent -replace '{COMPONENT_NAME}', $Name
+    Set-Content -Path "$Path\$Name.psm1" -Value $ModuleContent
+}
+
+function Add-UDReactComponentLibrary {
+    <#
+    .SYNOPSIS
+    Adds a NPM library to a PowerShell Universal React component.
+    
+    .DESCRIPTION
+    The Add-UDReactComponentLibrary function adds a NPM library to a PowerShell Universal React component. It installs the specified library and saves it to the package.json file.
+    
+    .PARAMETER Path
+    The path to the component.
+    
+    .PARAMETER Library
+    The name of the library to install.
+    
+    .PARAMETER Version
+    The version of the library to install.
+    
+    .EXAMPLE
+    Add-UDReactComponentLibrary -Path "$PSScriptRoot\project" -Library "react-icons"
+    #>
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path, 
+        [Parameter(Mandatory = $true)]
+        [string]$Library, 
+        [Parameter()]
+        [string]$Version)
+
+    $NPM = Get-Command "npm" -ErrorAction SilentlyContinue
+    if (-not $NPM) {
+        throw "NodeJS is not installed. Please install npm to use Add-UDReactComponentLibrary."
+    }
+
+    if (-not (Test-Path $Path)) {
+        throw "Path $Path does not exist."
+    }
+
+    Push-Location $Path
+
+    try {
+        if ($Version) {
+            & $NPM i $Library@$Version --save
+        }
+        else {
+            & $NPM i $Library --save
+        }
+    }
+    finally {
+        Pop-Location
+    }
+}
+
+function Invoke-UDReactComponentBuild {
+    <#
+    .SYNOPSIS
+    Builds a PowerShell Universal React component.
+    
+    .DESCRIPTION
+    The Invoke-UDReactComponentBuild function builds a PowerShell Universal React component. It installs the required NPM libraries, fixes any audit issues, and builds the component. The function copies the build output to the specified output path.
+    
+    .PARAMETER Path
+    The path to the component project.
+    
+    .PARAMETER OutputPath
+    The path to copy the build output to.
+    
+    .PARAMETER Force
+    Forces the build output to be copied to the output path.
+    
+    .EXAMPLE
+    Invoke-UDReactComponentBuild -Path "$PSScriptRoot\project" -OutputPath "$PSScriptRoot\output" -Force
+    #>
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path, 
+        [Parameter(Mandatory = $true)]
+        [string]$OutputPath, 
+        [Parameter()]
+        [Switch]$Force)
+
+    $NPM = Get-Command "npm" -ErrorAction SilentlyContinue
+    if (-not $NPM) {
+        throw "NodeJS is not installed. Please install npm to use Invoke-UDReactComponentBuild."
+    }
+
+    if (-not (Test-Path $Path)) {
+        throw "Path $Path does not exist."
+    }
+
+    if ((Test-Path $OutputPath)) {
+        if ($Force) {
+            Remove-Item $OutputPath -Recurse
+        }
+        else {
+            throw "Path $OutputPath already exists."
+        }
+    }
+
+    Push-Location $Path
+
+    Remove-Item "$Path\public" -Recurse -ErrorAction SilentlyContinue
+
+    try {
+        & $NPM i --legacy-peer-deps
+        & $NPM audit fix --force
+        & $NPM run build 
+    }
+    finally {
+        Pop-Location
+    }
+
+    Copy-Item "$Path\public" -Destination $OutputPath -Recurse
+    Copy-Item -Path "$Path\*.psd1" -Destination $OutputPath
+    Copy-Item -Path "$Path\*.psm1" -Destination $OutputPath
+}
