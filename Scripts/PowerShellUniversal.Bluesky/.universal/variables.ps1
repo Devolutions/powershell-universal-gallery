@@ -1,0 +1,1 @@
+﻿New-PSUVariable -Name "PSUBlueskyCredential" -Vault "Database" -Type "PSCredential"

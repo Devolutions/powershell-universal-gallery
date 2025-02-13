@@ -1,0 +1,15 @@
+﻿<Space Direction="Vertical">
+    <SpaceItem>
+        <Text>Send a message to Bluesky</Text>
+    </SpaceItem>
+    <SpaceItem>
+        <Form Model="$Model" OnFinish="Submit">
+            <FormItem Help="A message to send to Bluesky.">
+                <Input bind-Value="$Model.Message" Placeholder="Message" />
+            </FormItem>
+            <FormItem>
+                <Button HtmlType="Submit" Icon="User">Send</Button>
+            </FormItem>
+        </Form>
+    </SpaceItem>
+</Space>
