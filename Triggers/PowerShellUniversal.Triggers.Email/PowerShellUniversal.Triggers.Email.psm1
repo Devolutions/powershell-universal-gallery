@@ -1,4 +1,4 @@
-function Send-PSUTriggerUEmail {
+function Send-PSUTriggerEmail {
     param(
         [Parameter(Mandatory, ParameterSetName = 'AppToken')]
         $AppToken,
