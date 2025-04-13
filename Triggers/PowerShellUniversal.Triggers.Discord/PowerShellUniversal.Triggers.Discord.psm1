@@ -29,7 +29,7 @@ function Send-PSUDiscordNotification {
 
     if ($Job) {
         $Content = "A job has completed."
-        $Text = Format-PSUJobDescription -Job $Job #-AsMarkdown
+        $Text = Format-PSUJobDescription -Job $Job -AsMarkdown
         $Header = "[$($Job.Id)] $($Job.ScriptFullPath) $($Job.Status.ToString())"
     }
 
