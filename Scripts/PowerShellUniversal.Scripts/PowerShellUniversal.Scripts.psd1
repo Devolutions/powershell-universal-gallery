@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PowerShellUniversal.Scripts.psm1'
-    ModuleVersion     = '1.0.1'
+    ModuleVersion     = '1.0.2'
     GUID              = '06236701-c52a-4f75-9d8d-5f239d3862e2'
     Author            = 'Ironman Software'
     CompanyName       = 'Ironman Software'
