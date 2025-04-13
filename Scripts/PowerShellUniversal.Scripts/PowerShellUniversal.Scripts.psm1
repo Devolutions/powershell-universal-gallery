@@ -25,10 +25,10 @@ function Format-PSUJobDescription {
     }
     elseif ($Job.ScheduleId -ne 0 -and $Job.ScheduleId -ne $null) {
         if ($Markdown) {
-            $Text = "The job run on schedule [$($Job.Schedule)]($ApiUrl/admin/automation/schedules)"
+            $Text = "The job ran on the schedule [$($Job.Schedule)]($ApiUrl/admin/automation/schedules)"
         }
         else {
-            $Text = "The job run on schedule <$ApiUrl/admin/automation/schedules|$($Job.Schedule)>"
+            $Text = "The job ran on the schedule <$ApiUrl/admin/automation/schedules|$($Job.Schedule)>"
         }
     }
     else {
