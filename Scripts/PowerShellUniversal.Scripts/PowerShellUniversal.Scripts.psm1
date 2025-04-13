@@ -14,14 +14,22 @@ function Format-PSUJobDescription {
     #>
     param (
         [Parameter(Mandatory = $true)]
-        $Job
+        $Job,
+        [Parameter()]
+        [switch]$Markdown
+
     )
 
     if ($Job.Triggered) {
         $Text = "The job was triggered by **$($Job.Trigger)**"
     }
-    elseif ($Job.ScheduleId -ne 0) {
-        $Text = "The job run on schedule <$ApiUrl/admin/automation/schedules|$($Job.Schedule)>"
+    elseif ($Job.ScheduleId -ne 0 -and $Job.ScheduleId -ne $null) {
+        if ($Markdown) {
+            $Text = "The job run on schedule [$($Job.Schedule)]($ApiUrl/admin/automation/schedules)"
+        }
+        else {
+            $Text = "The job run on schedule <$ApiUrl/admin/automation/schedules|$($Job.Schedule)>"
+        }
     }
     else {
         $Text = "The job was run manually by $($Job.Identity.Name)"
