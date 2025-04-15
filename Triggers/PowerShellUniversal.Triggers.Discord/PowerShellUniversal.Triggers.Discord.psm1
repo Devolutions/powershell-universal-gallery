@@ -29,7 +29,7 @@ function Send-PSUDiscordNotification {
 
     if ($Job) {
         $Content = "A job has completed."
-        $Text = Format-PSUJobDescription -Job $Job -AsMarkdown
+        $Text = Format-PSUJobDescription -Job $Job -Markdown
         $Header = "[$($Job.Id)] $($Job.ScriptFullPath) $($Job.Status.ToString())"
     }
 
@@ -60,7 +60,5 @@ function Send-PSUDiscordNotification {
             }
         )
     }
-
     Invoke-RestMethod -Uri $DiscordWebhookUrl -Method Post -Body ($DiscordData | ConvertTo-Json -Depth 10) -ContentType "application/json"
-
 }

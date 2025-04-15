@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PowerShellUniversal.Triggers.Discord.psm1'
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '1.0.1'
     GUID              = 'be654e36-c308-477f-b6ba-214ed2726e78'
     Author            = 'Ironman Software'
     CompanyName       = 'Ironman Software'
