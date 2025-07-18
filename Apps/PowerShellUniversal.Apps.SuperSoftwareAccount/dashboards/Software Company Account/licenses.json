@@ -1,0 +1,95 @@
+﻿{
+    "data": [
+        {
+            "accountName": "admin",
+            "userCount": 1,
+            "endDate": "2026-07-31T23:59:59Z",
+            "assetId": "02iAu000004CbHdIAK",
+            "assetName": "Super Software Suite",
+            "group": "sss",
+            "sku": "sss",
+            "licenses": [],
+            "action": 1
+        },
+        {
+            "accountName": "admin",
+            "universalKey": "GLN4Z-XYZ123-Z4HNC-UCJR4-3T2N5",
+            "userCount": 1,
+            "endDate": "2026-07-31T23:59:59Z",
+            "assetId": "02iAu000004CbHeIAK",
+            "assetName": "Super Software Editor",
+            "group": "sse",
+            "sku": "sss-sse",
+            "licenses": [
+                {
+                    "key": "WJWM4-XYZ123-6J2DW-NFN97-DJ3J8",
+                    "userCount": 1,
+                    "startDate": "2025-07-17T00:00:00Z",
+                    "expirationDate": "2026-07-31T23:59:59Z",
+                    "isExclusive": false,
+                    "isFree": false,
+                    "isTrial": false,
+                    "customName": "",
+                    "description": "",
+                    "isDeletable": false
+                }
+            ],
+            "action": 1
+        },
+        {
+            "accountName": "admin",
+            "universalKey": "GLN4Z-XYZ123-Z4HNC-UCJR4-3T2N5",
+            "userCount": 2,
+            "endDate": "2026-07-31T23:59:59Z",
+            "assetId": "02iAu000004CbHfIAK",
+            "assetName": "Super Software Server",
+            "description": "Includes all the great features of SSS.",
+            "group": "sss",
+            "sku": "sss-sse",
+            "licenses": [
+                {
+                    "key": "DVGD3-XYZ123-Z33H6-MJESU-VE36P",
+                    "userCount": 2,
+                    "startDate": "2025-07-17T00:00:00Z",
+                    "expirationDate": "2026-07-31T23:59:59Z",
+                    "isExclusive": false,
+                    "isFree": false,
+                    "isTrial": false,
+                    "customName": "",
+                    "description": "",
+                    "isDeletable": false
+                }
+            ],
+            "action": 1
+        },
+        {
+            "accountName": "admin",
+            "universalKey": "GLN4Z-XYZ123-Z4HNC-UCJR4-3T2N5",
+            "userCount": 1,
+            "endDate": "2026-07-31T23:59:59Z",
+            "assetId": "02iAu000004CbHgIAK",
+            "assetName": "Super Software Vault",
+            "group": "sss",
+            "sku": "sss-ssv",
+            "licenses": [
+                {
+                    "key": "CGQSU-XYZ123-L4UCC-48PJT-DZCLA",
+                    "userCount": 1,
+                    "startDate": "2025-07-17T00:00:00Z",
+                    "expirationDate": "2026-07-31T23:59:59Z",
+                    "isExclusive": false,
+                    "isFree": false,
+                    "isTrial": false,
+                    "customName": "",
+                    "description": "",
+                    "isDeletable": false
+                }
+            ],
+            "action": 1
+        }
+    ],
+    "detailedErrorMessage": "",
+    "errorMessage": "",
+    "isWarning": false,
+    "result": 1
+}

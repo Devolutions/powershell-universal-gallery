@@ -1,0 +1,27 @@
+﻿{
+    "data": [
+        {
+            "match": "hello|hi|hola",
+            "response": "Hello and welcome to the Super Software Company help bot!"
+        },
+        {
+            "match": "license",
+            "response": "Click the Licenses page to view your licenses.",
+            "link": "/licenses"
+        },
+        {
+            "match": "bug|feature",
+            "response": "Please open a bug or feature request on GitHub.",
+            "link": "www.github.com"
+        },
+        {
+            "matches": "bill|invoice",
+            "response": "Click the Billing page to view your billing history.",
+            "link": "/billing"
+        },
+        {
+            "matches": ".*",
+            "response": "I don't know how to answer that."
+        }
+    ]
+}
