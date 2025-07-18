@@ -1,0 +1,1 @@
+﻿New-PSUApp -Name "Software Company Account" -FilePath "dashboards\Software Company Account\Software Company Account.ps1" -BaseUrl "/software-company-account" -Authenticated -AutoDeploy 

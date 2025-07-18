@@ -1,0 +1,40 @@
+﻿{
+    "data": [
+        {
+            "orderDate": "2023-07-18T15:38:32.1711043Z",
+            "total": "300.39",
+            "sku": "Super Software Editor",
+            "quantity": 1
+        },
+        {
+            "orderDate": "2023-07-18T15:38:32.1711043Z",
+            "total": "916.26",
+            "sku": "Super Software Server",
+            "quantity": 2
+        },
+        {
+            "orderDate": "2023-07-18T15:38:32.1711043Z",
+            "total": "502.54",
+            "sku": "Super Software Vault",
+            "quantity": 1
+        },
+                {
+            "orderDate": "2024-07-18T15:38:32.1711043Z",
+            "total": "300.39",
+            "sku": "Super Software Editor",
+            "quantity": 1
+        },
+        {
+            "orderDate": "2024-07-18T15:38:32.1711043Z",
+            "total": "916.26",
+            "sku": "Super Software Server",
+            "quantity": 2
+        },
+        {
+            "orderDate": "2024-07-18T15:38:32.1711043Z",
+            "total": "502.54",
+            "sku": "Super Software Vault",
+            "quantity": 1
+        }
+    ]
+}
