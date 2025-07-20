@@ -1,0 +1,1 @@
+﻿New-PSUApp -Name "CRM" -FilePath "dashboards\CRM\CRM.ps1" -BaseUrl "/crm" -Authenticated -AutoDeploy 

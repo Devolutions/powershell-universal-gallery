@@ -1,0 +1,1 @@
+﻿New-UDApp -Title "PSU CRM" -NavigationLayout Permanent
