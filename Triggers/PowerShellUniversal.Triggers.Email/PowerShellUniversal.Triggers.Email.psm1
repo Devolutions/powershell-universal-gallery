@@ -17,6 +17,8 @@ function Send-PSUTriggerEmail {
         [Parameter()]
         $Data
     )
+
+    Import-Module -Name "$PSScriptRoot\AnsiConsoleToHtml.dll"
     
     if ($PSCmdlet.ParameterSetName -eq 'Job') {
         $Output = Get-PSUJob -Id $Job.Id | Get-PSUJobOutput | Select-Object -First 10 | ForEach-Object { "$_`r`n" }
