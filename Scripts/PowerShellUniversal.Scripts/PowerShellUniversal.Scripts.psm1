@@ -23,7 +23,7 @@ function Format-PSUJobDescription {
     if ($Job.Triggered) {
         $Text = "The job was triggered by **$($Job.Trigger)**"
     }
-    elseif ($Job.ScheduleId -ne 0 -and $Job.ScheduleId -ne $null) {
+    elseif ($Job.ScheduleId -gt 0 -and $null -ne $Job.ScheduleId) {
         if ($Markdown) {
             $Text = "The job ran on the schedule [$($Job.Schedule)]($ApiUrl/admin/automation/schedules)"
         }
@@ -35,15 +35,15 @@ function Format-PSUJobDescription {
         $Text = "The job was run manually by $($Job.Identity.Name)"
     }
 
-    if ($Job.Environment -ne $Null) {
+    if ($null -ne $Job.Environment) {
         $Text += " in the $($Job.Environment) environment"
     }
 
-    if ($Job.Credential -ne $null) {
+    if ($null -ne $$Job.Credential) {
         $Text += " as $($Job.Credential)"
     }
 
-    if ($Job.ComputerName -ne $null) {
+    if ($null -ne $$Job.ComputerName) {
         $Text += " on $($Job.ComputerName)"
     }
 
