@@ -8,13 +8,11 @@ This repository is a collection of modules that you can use directly with PowerS
 
 ## Support
 
-These modules are not supported through the general Ironman Software support agreement for PowerShell Universal. Bugs and feature requests should be made through this repository. 
+These modules are not supported through the general Devolutions support agreement for PowerShell Universal. Bugs and feature requests should be made through this repository. 
 
 ## Usage
 
 These resources are published to the PowerShell Gallery. You can install them directly through PowerShell Universal or through PSResourceGet. You do not need to contribute to this repository to provide modules that will surface on the PowerShell Gallery or within PowerShell Universal. If you use the `PowerShellUniversal` tag in your module manifest, they will appear in both places. 
-
-### PowerShell Universal v5
 
 This repository is automatically installed with PowerShell Universal v5 and integrated into the admin console. You can access the gallery by clicking Platform \ Gallery.
 
@@ -25,10 +23,6 @@ The gallery contains a collection of modules that you can use in your environmen
 ![](/images/library-button.png)
 
 Solutions installed from the gallery will appear in the Modules page and their resources will automatically be added.
-
-### PowerShell Universal v4
-
-This repository can be installed with PowerShell Universal v4 by registering it as a module repository.
  
 #### Add Resources to PSU
 
