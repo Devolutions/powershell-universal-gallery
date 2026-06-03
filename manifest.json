@@ -1,0 +1,423 @@
+[
+  {
+    "name": "Devolutions.CIEM",
+    "version": "0.2.132",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/adbertram/Devolutions-CIEM",
+    "description": "Cloud Infrastructure Entitlement Management (CIEM) for PowerShell Universal. Detects dormant permissions, right-sizes roles, maps identity-to-resource relationships, and surfaces attack paths across Azure and AWS."
+  },
+  {
+    "name": "PowerShellUniversal.ActiveDirectory.Scripts",
+    "version": "1.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/ActiveDirectory/ActiveDirectory.Scripts",
+    "description": "Active Directory scripts for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.API.CIM",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/APIs/PowerShellUniversal.API.CIM",
+    "description": "Provides API endpoints from querying, creating, deleting and updating CIM instances."
+  },
+  {
+    "name": "PowerShellUniversal.API.dbatools",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/APIs/PowerShellUniversal.API.dbatools",
+    "description": "HTTP REST APIs for dbatools."
+  },
+  {
+    "name": "PowerShellUniversal.API.Monitoring",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/APIs/PowerShellUniversal.API.Monitoring",
+    "description": "Server monitoring API for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.API.PSResourceGet",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/APIs/PowerShellUniversal.API.PSResourceGet",
+    "description": "Provides API endpoints for managing PowerShell resources."
+  },
+  {
+    "name": "PowerShellUniversal.API.System",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/APIs/PowerShellUniversal.API.System",
+    "description": "Provides API endpoints for system information."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.ActiveDirectory",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/ActiveDirectory/PowerShellUniversal.Apps.ActiveDirectory",
+    "description": "Active Directory tools built with PowerShell Universal. Reset passwords, restore deleted users, manage group membership and search for objects."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.AutomatedLab",
+    "version": "1.2.0",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/steviecoaster/PowerShellUniversal.Apps.AutomatedLab",
+    "description": "AutomatedLab management app for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Bookworm",
+    "version": "2.0.1",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/steviecoaster/PowerShellUniversal.Apps.Bookworm",
+    "description": "A personal library application for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Cookbook",
+    "version": "1.5.0",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/steviecoaster/PowerShellUniversal.Apps.Cookbook",
+    "description": "A cookbook app for PowerShell Universal"
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Earthquakes",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.Earthquakes",
+    "description": "An app that displays earthquakes in a map for the last 24 hours."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Excel",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.Excel",
+    "description": "Excel components for Apps."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.HerdManager",
+    "version": "2.3.0",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/steviecoaster/PowerShellUniversal.Apps.HerdMgr",
+    "description": "PowerShell Universal dashboard application for cattle herd management, including weight tracking, rate of gain calculations, health records, feed records with dynamic recipe management, and invoicing capabilities."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.LetsEncrypt",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "description": "A Powershell Universal app module that streamlines certifcate creation process for Let's Encrypt certificates. Uses Posh-ACME and the Cloudflare plugin, but can be extended for others."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.NetworkUtilities",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.NetworkUtilities",
+    "description": "Network utilities built with PowerShell Universal. Resolve DNS names, scan networks, and run speed tests."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Pester",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.Pester",
+    "description": "A Pester test result viewer for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Random",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.Random",
+    "description": "Random tools for apps."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Services",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.Services",
+    "description": "Service Manager for Windows."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.TaskManager",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.TaskManager",
+    "description": "Task Manager for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.ThemeBuilder",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShellUniversal.Apps.ThemeBuilder",
+    "description": "Theme builder app for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Apps.Tools",
+    "version": "1.1.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Apps/PowerShell/Tools",
+    "description": "Tools for working with PowerShell apps."
+  },
+  {
+    "name": "PowerShellUniversal.Bluesky",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Scripts/PowerShellUniversal.Bluesky",
+    "description": "Bluesky integration for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Component.BarcodeScanner",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "description": "A barcode scanner component for PowerShell universal. Uses your device camera, compatible with mobile devices."
+  },
+  {
+    "name": "PowerShellUniversal.HealthCheck.ExcessiveRunspaces",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/HealthChecks/PowerShellUniversal.HealthCheck.ExcessiveRunspaces",
+    "description": "Adds a health check that checks for excessive runspace usage by the Universal server."
+  },
+  {
+    "name": "PowerShellUniversal.HealthCheck.InternetAccess",
+    "version": "1.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/HealthChecks/PowerShellUniversal.HealthCheck.InternetAccess",
+    "description": "Adds a health check to ensure the server has internet access."
+  },
+  {
+    "name": "PowerShellUniversal.Logging.ElasticSearch",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/gallery/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/gallery/tree/main/Diagnostics/PowerShellUniversal.Logging.ElasticSearch",
+    "description": "Logging targets for Elasticsearch in PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Roles.ActiveDirectory",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Roles/PowerShellUniversal.Roles.ActiveDirectory",
+    "description": "Features for integrating with Active Directory security."
+  },
+  {
+    "name": "PowerShellUniversal.Roles.Azure",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Roles/PowerShellUniversal.Roles.Azure",
+    "description": "Azure Security integration for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Scripts",
+    "version": "1.0.2",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Universal/PowerShellUniversal.Scripts",
+    "description": "A collection of scripts for PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.StandardLibrary",
+    "version": "1.4.0",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/steviecoaster/PowerShellUniversal.StandardLibrary",
+    "description": "A UI toolkit for repeatable PSU app patterns"
+  },
+  {
+    "name": "PowerShellUniversal.Triggers.BurntToast",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Triggers/PowerShellUniversal.Triggers.BurntToast",
+    "description": "Send BurntToast notifications from PowerShell Universal to client machines."
+  },
+  {
+    "name": "PowerShellUniversal.Triggers.Discord",
+    "version": "1.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/blob/main/Triggers/PowerShellUniversal.Triggers.Discord",
+    "description": "Scripts for working with Discord."
+  },
+  {
+    "name": "PowerShellUniversal.Triggers.Email",
+    "version": "1.0.4",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Triggers/PowerShellUniversal.Triggers.Email",
+    "description": "A module that contains functions for sending emails when certain triggers take place in PowerShell Universal."
+  },
+  {
+    "name": "PowerShellUniversal.Triggers.MSTeams",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Triggers/PowerShellUniversal.Triggers.MSTeams",
+    "description": "Scripts for sending triggers to Microsoft Teams."
+  },
+  {
+    "name": "PowerShellUniversal.Triggers.Slack",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/script.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/blob/main/Triggers/PowerShellUniversal.Triggers.Slack",
+    "description": "Scripts for working with Slack."
+  },
+  {
+    "name": "PowerShellUniversal.Weather.Apps",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/scripts/main/images/app.png",
+    "projectUrl": "https://github.com/ironmansoftware/scripts/tree/main/Misc/PowerShellUniversal.Weather.Apps",
+    "description": "Weather components for PowerShell Universal Apps."
+  },
+  {
+    "name": "UDSliderCaptcha",
+    "version": "1.1.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/psDevUK/UDSliderCaptcha/main/UDSliderCaptcha.gif",
+    "projectUrl": "https://github.com/psDevUK/UDSliderCaptcha",
+    "description": "A simple slider captcha to prove a human is on the other-end"
+  },
+  {
+    "name": "Universal.Apps.NetworkUtilities",
+    "version": "0.0.2",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Apps/Universal.Apps.NetworkUtilities",
+    "description": "Network utilities built with PowerShell Universal. Resolve DNS names, scan networks, and run speed tests."
+  },
+  {
+    "name": "Universal.Apps.PowerGUI",
+    "version": "0.0.4",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Apps/Universal.Apps.PowerGUI",
+    "description": "A PowerGUI Administrative Console clone made in PowerShell Universal.."
+  },
+  {
+    "name": "Universal.Apps.WindowsSystemInformation",
+    "version": "0.0.4",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Apps/Universal.Apps.WindowsSystemInformation",
+    "description": "Windows System Information app for PowerShell Universal."
+  },
+  {
+    "name": "Universal.Components.Calendar",
+    "version": "0.0.7",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Calendar",
+    "description": "Calendar component for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Components.Joyride",
+    "version": "0.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Joyride",
+    "description": "Create awesome tours for your app!"
+  },
+  {
+    "name": "Universal.Components.Loader",
+    "version": "0.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Loader",
+    "description": "A loader component for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Components.Recharts",
+    "version": "0.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Recharts",
+    "description": "Recharts component for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Components.TinyMCE",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/TinyMCE",
+    "description": "TinyMCE Editor for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Icons.Bootstrap",
+    "version": "0.0.5",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/universal-modules/main/Components/Icons.Bootstrap/logo.png",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Icons.Bootstrap",
+    "description": "Bootstrap icons for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Icons.Feather",
+    "version": "0.0.5",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Icons.Feather",
+    "description": "Feather icons for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Icons.MaterialDesign",
+    "version": "0.0.3",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/universal-modules/main/Components/Icons.MaterialDesign/logo.png",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Icons.MaterialDesign",
+    "description": "Material Design icons for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Icons.Tabler",
+    "version": "0.0.3",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://raw.githubusercontent.com/ironmansoftware/universal-modules/main/Components/Icons.Tabler/logo.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Components/Icons.Tabler",
+    "description": "Tabler icons for PowerShell Universal apps."
+  },
+  {
+    "name": "Universal.Notifications",
+    "version": "0.0.4",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Notifications/Universal.Notifications",
+    "description": "Scripts that can be used for notifications within PowerShell Universal."
+  },
+  {
+    "name": "Universal.Security.ActiveDirectoryRoles",
+    "version": "0.0.1",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Security/Universal.Security.ActiveDirectoryRoles",
+    "description": "Generates and assigns roles based on Active Directory groups."
+  },
+  {
+    "name": "Universal.Utilities.Apps",
+    "version": "0.0.4",
+    "source": "PowerShellGallery",
+    "iconUrl": "https://www.ironmansoftware.com/img/ps-icon.svg",
+    "projectUrl": "https://github.com/ironmansoftware/universal-modules/tree/main/Utilities/Universal.Utilities.Apps",
+    "description": "Utility cmdlets for PowerShell Universal apps."
+  },
+  {
+    "name": "UniversalDashboard.Pivot",
+    "version": "1.0.0",
+    "source": "PowerShellGallery",
+    "projectUrl": "https://github.com/eizedev/ud-pivot",
+    "description": "Pivot component for PowerShell Universal. Create interactive pivot tables based on react-pivottable."
+  }
+]

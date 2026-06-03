@@ -1,0 +1,131 @@
+name: Sync PowerShell Gallery Manifest
+
+on:
+  workflow_dispatch:
+    inputs:
+      fullSync:
+        description: Run a full PowerShell Gallery scan instead of using the last successful sync as a cutoff.
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: psgallery-manifest-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect last successful sync
+        id: last_sync
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          $headers = @{
+            Authorization = "Bearer $env:GITHUB_TOKEN"
+            Accept = 'application/vnd.github+json'
+            'X-GitHub-Api-Version' = '2022-11-28'
+          }
+
+          $uri = 'https://api.github.com/repos/{0}/actions/workflows/syncPsGalleryManifest.yaml/runs?status=success&exclude_pull_requests=true&per_page=1' -f '${{ github.repository }}'
+
+          try {
+            $response = Invoke-RestMethod -Uri $uri -Headers $headers
+            $lastSync = $response.workflow_runs | Select-Object -ExpandProperty updated_at -First 1
+          }
+          catch {
+            Write-Warning "Unable to determine the last successful sync time. Falling back to a full scan. $_"
+            $lastSync = $null
+          }
+
+          if (-not [string]::IsNullOrWhiteSpace($lastSync)) {
+            "value=$lastSync" >> $env:GITHUB_OUTPUT
+            Write-Host "Last successful sync: $lastSync"
+          }
+          else {
+            Write-Host 'No prior successful sync detected.'
+          }
+
+      - name: Sync manifest
+        id: sync
+        shell: pwsh
+        run: |
+          $parameters = @{
+            ManifestPath = '.\manifest.json'
+          }
+
+          if ('${{ inputs.fullSync }}' -eq 'true') {
+            $parameters.ForceFullSync = $true
+          }
+          elseif (-not [string]::IsNullOrWhiteSpace('${{ steps.last_sync.outputs.value }}')) {
+            $parameters.PublishedAfter = '${{ steps.last_sync.outputs.value }}'
+          }
+          else {
+            $parameters.ForceFullSync = $true
+          }
+
+          .\.github\scripts\Sync-PsGalleryManifest.ps1 @parameters
+
+          if (git diff --quiet -- manifest.json) {
+            'changed=false' >> $env:GITHUB_OUTPUT
+            Write-Host 'No manifest changes detected.'
+          }
+          else {
+            'changed=true' >> $env:GITHUB_OUTPUT
+            Write-Host 'Manifest changes detected.'
+          }
+
+      - name: Commit and push manifest update
+        if: steps.sync.outputs.changed == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $branch = 'automation/powershell-gallery-manifest-sync'
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manifest.json
+          git commit -m 'Sync PowerShell Gallery manifest'
+          git push --force-with-lease origin HEAD:$branch
+
+      - name: Create pull request if needed
+        if: steps.sync.outputs.changed == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $branch = 'automation/powershell-gallery-manifest-sync'
+          $baseBranch = '${{ github.event.repository.default_branch }}'
+          $incrementalCutoff = '${{ steps.last_sync.outputs.value }}'
+
+          if ([string]::IsNullOrWhiteSpace($incrementalCutoff)) {
+            $incrementalCutoff = 'full scan'
+          }
+
+          $existingPrCount = gh pr list --head $branch --base $baseBranch --state open --json number --jq 'length'
+          if ($existingPrCount -gt 0) {
+            Write-Host 'An open pull request already exists for the automation branch.'
+            exit 0
+          }
+
+          $body = @"
+          Automated update of manifest.json from the PowerShell Gallery NuGet feed.
+
+          - Trigger: ${{ github.event_name }}
+          - Incremental cutoff: $incrementalCutoff
+          "@
+
+          gh pr create --base $baseBranch --head $branch --title 'Sync PowerShell Gallery manifest' --body $body
