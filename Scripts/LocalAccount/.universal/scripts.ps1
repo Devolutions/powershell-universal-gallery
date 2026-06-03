@@ -1,0 +1,1 @@
+New-PSUScript -Module 'Devolutions.LocalAccount.Scripts' -Command 'New-PSULocalAccount' -Description 'Creates a new local user account.'

@@ -53,18 +53,18 @@ The following tags are used to categorize modules in PowerShell Universal
 
 ### Naming Conventions
 
-We recommend naming your modules so they are discoverable. Consider prefixing with `PowerShellUniversal`, followed by the category of the features, and followed by the specific implementation. 
+We recommend naming your modules so they are discoverable. Consider prefixing with `Devolutions`, followed by the category of the features, and followed by the specific implementation. 
 
 ```
-PowerShellUniversal.{Feature}.{Implementation}
+Devolutions.{Feature}.{Implementation}
 ```
 
 For example: 
 
 ```
-PowerShellUniversal.Scripts.ActiveDirectory
-PowerShellUniversal.Triggers.Slack
-PowerShellUniversal.Widgets.Weather
+Devolutions.PowerShellUniversal.Scripts.ActiveDirectory
+Devolutions.PowerShellUniversal.Triggers.Slack
+Devolutions.PowerShellUniversal.Widgets.Weather
 ```
 
 Some modules do not follow this convention, but we recommend it for discoverability.
@@ -79,7 +79,7 @@ We currently do not require tests but prefer any tests are written in Pester. We
 
 ### Publishing to the PowerShell Gallery 
 
-If you have the permissions to publish to the PowerShell Gallery, run the `Publish to PowerShell Gallery` GitHub Action and specify the folder to publish. For example: `ActiveDirectory/PowerShellUniversal.ActiveDirectory.Scripts/`.
+If you have the permissions to publish to the PowerShell Gallery, run the `Publish to PowerShell Gallery` GitHub Action and specify the folder to publish. For example: `Scripts/ActiveDirectory/`.
 
 ### Syncing the gallery manifest
 

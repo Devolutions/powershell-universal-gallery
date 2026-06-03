@@ -1,0 +1,1 @@
+New-PSUScript -Module "Devolutions.PowerShellUniversal.Triggers.Slack" -Command "Send-PSUSlackNotification"

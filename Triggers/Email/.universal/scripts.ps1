@@ -1,0 +1,1 @@
+New-PSUScript -Module 'Devolutions.PowerShellUniversal.Triggers.Email' -Command 'Send-PSUTriggerEmail' -Description 'Sends emails based on triggers.'

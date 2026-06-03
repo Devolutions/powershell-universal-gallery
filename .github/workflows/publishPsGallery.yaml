@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'The path of the module to publish'
+        description: 'Relative module folder to publish, for example APIs/CIM or Scripts/ActiveDirectory'
         required: true
         type: string
 
