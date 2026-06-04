@@ -4,7 +4,7 @@
     GUID              = 'c6b4fd4a-7d9a-465b-a04d-a26077d2d43e'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Scripts for working with Discord.'
     RequiredModules   = @('Devolutions.PowerShellUniversal.Scripts')
     FunctionsToExport = @('Send-PSUDiscordNotification')

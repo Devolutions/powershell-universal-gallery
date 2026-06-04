@@ -3,7 +3,8 @@
     Description       = "Send BurntToast notifications from PowerShell Universal to client machines."
     ModuleVersion     = "1.0.0"
     Author            = 'Devolutions, Inc.'
-    Copyright         = "Ironman Software"
+    CompanyName       = 'Devolutions, Inc.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     GUID              = "30fa0fc5-de8d-4f20-8bbf-8ec79d961f3b"
     FunctionsToExport = @('Send-PSUBTNotification', 'Invoke-PSUBTTrigger')
     RequiredModules   = @('BurntToast')

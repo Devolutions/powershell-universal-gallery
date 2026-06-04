@@ -4,7 +4,7 @@
     GUID              = '7b9c309e-b282-4c49-ac98-7c6bb87a3da6'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Scripts for sending triggers to Microsoft Teams.'
     FunctionsToExport = @('Send-PSUTeamsNotification')
     PrivateData       = @{

@@ -3,7 +3,7 @@
     GUID          = 'ec15c2f6-59e8-4c66-9b1e-9e142261f191'
     Author        = 'Devolutions, Inc.'
     CompanyName   = 'Devolutions, Inc.'
-    Copyright     = '(c) Ironman Software. All rights reserved.'
+    Copyright     = '(c) Devolutions, Inc. All rights reserved.'
     Description   = 'Logging targets for Elasticsearch in PowerShell Universal.'
     PrivateData   = @{
         PSData = @{

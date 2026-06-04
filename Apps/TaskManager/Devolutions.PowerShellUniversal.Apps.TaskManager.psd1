@@ -4,7 +4,7 @@
     GUID              = 'e8743cc2-c33f-415b-a517-6a5c0d4d84b1'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Task Manager for PowerShell Universal.'
     FunctionsToExport = @(
         'New-PSUTaskManagerApp'

@@ -4,7 +4,7 @@
     GUID              = '6f57a471-f7b5-4a44-b9b7-a62ca8b13d90'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'File System components for Apps.'
     FunctionsToExport = @(
         'New-UDFileSystemBrowser'

@@ -3,7 +3,7 @@
     GUID          = 'ea2030a1-9a26-41d6-a785-e08364ecf216'
     Author        = 'Devolutions, Inc.'
     CompanyName   = 'Devolutions, Inc.'
-    Copyright     = '(c) Ironman Software. All rights reserved.'
+    Copyright     = '(c) Devolutions, Inc. All rights reserved.'
     Description   = 'Provides API endpoints from querying, creating, deleting and updating CIM instances.'
     PrivateData   = @{
         PSData = @{

@@ -4,7 +4,7 @@
     GUID              = '0ec91ece-0e1e-409d-8251-9901a7224f38'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Random tools for apps.'
     FunctionsToExport = @(
         'New-UDRandom'

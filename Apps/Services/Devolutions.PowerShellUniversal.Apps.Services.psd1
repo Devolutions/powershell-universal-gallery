@@ -4,7 +4,7 @@
     GUID              = 'a7255a37-0256-47bc-a9cf-65f73d30198b'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Service Manager for Windows.'
     FunctionsToExport = @(
         'New-PSUServiceApp',

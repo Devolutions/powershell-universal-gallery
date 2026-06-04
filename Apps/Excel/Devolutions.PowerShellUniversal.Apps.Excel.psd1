@@ -4,7 +4,7 @@
     GUID              = '7b9485e0-cb4f-4e1b-bad3-151e3c26a64c'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Excel components for Apps.'
     FunctionsToExport = @(
         'New-UDExcelTable'
