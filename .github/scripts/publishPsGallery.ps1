@@ -1,4 +1,4 @@
-$InputPath = Join-Path $PSScriptRoot $env:inputpath
+$InputPath = Join-Path $PSScriptRoot '..\..' $env:inputpath
 
 $ManifestPath = Get-ChildItem -Path $InputPath -Filter *.psd1
 $Manifest = Import-PowerShellDataFile -Path $ManifestPath.FullName

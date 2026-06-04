@@ -81,3 +81,7 @@ We currently do not require tests but prefer any tests are written in Pester. We
 
 If you have the permissions to publish to the PowerShell Gallery, run the `Publish to PowerShell Gallery` GitHub Action and specify the folder to publish. For example: `ActiveDirectory/PowerShellUniversal.ActiveDirectory.Scripts/`.
 
+### Syncing the gallery manifest
+
+This repository keeps `manifest.json` in sync with the PowerShell Gallery. Packages tagged with `PowerShellUniversal` are discovered automatically and added to the manifest.
+
