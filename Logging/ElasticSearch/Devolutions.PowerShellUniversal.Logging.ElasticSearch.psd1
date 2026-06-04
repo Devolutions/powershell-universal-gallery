@@ -9,7 +9,7 @@
         PSData = @{
             Tags       = @('app', 'logging', 'elasticsearch', 'PowerShellUniversal')
             LicenseUri = 'https://github.com/devolutions/powershell-universal-gallery/blob/main/LICENSE'
-            ProjectUri = 'https://github.com/devolutions/powershell-universal-gallery/tree/main/LoggingTargets/ElasticSearch'
+            ProjectUri = 'https://github.com/devolutions/powershell-universal-gallery/tree/main/Logging/ElasticSearch'
             IconUri    = 'https://raw.githubusercontent.com/devolutions/powershell-universal-gallery/main/images/script.png'
         } 
     } 
