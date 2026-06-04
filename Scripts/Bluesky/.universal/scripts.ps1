@@ -1,0 +1,2 @@
+New-PSUScript -Module "Devolutions.PowerShellUniversal.Bluesky" -Command "Get-PSUBlueskyFeed" -Role @('Administrator') -PortalOutputType "Table" 
+New-PSUScript -Description "Send-PSUBlueskyPost [[-Message] <Object>]" -Module "Devolutions.PowerShellUniversal.Bluesky" -Command "Send-PSUBlueskyPost" 

@@ -1,1 +1,0 @@
-New-PSUApp -Name 'Earthquakes' -BaseUrl '/earthquakes' -Module 'PowerShellUniversal.Apps.Earthquakes' -Command 'New-UDEarthquakesApp'

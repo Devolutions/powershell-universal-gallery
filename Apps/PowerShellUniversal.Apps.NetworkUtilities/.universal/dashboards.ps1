@@ -1,1 +1,0 @@
-New-PSUApp -Name 'Network Utilities' -BaseUrl '/network-utilities' -Module 'PowerShellUniversal.Apps.NetworkUtilities' -Command 'New-NetworkUtilityApp' -Authenticated -Role @("Administrator", "Network Utilities User")

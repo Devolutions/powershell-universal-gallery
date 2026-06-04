@@ -1,1 +1,0 @@
-New-PSUScript -Module "PowerShellUniversal.Triggers.Discord" -Command "Send-PSUDiscordNotification"

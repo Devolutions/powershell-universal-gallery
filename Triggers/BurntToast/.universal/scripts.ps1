@@ -1,0 +1,2 @@
+New-PSUScript -Command "Invoke-PSUBTTrigger" -Module 'Devolutions.PowerShellUniversal.Triggers.BurntToast'
+New-PSUScript -Command "Send-PSUBTNotification" -Module 'Devolutions.PowerShellUniversal.Triggers.BurntToast'

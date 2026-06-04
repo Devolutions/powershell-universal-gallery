@@ -1,1 +1,0 @@
-﻿New-PSUApp -Name "Services" -Module "PowerShellUniversal.Apps.Services" -Command 'New-PSUServiceApp' -BaseUrl "/services" -Authenticated -AutoDeploy -Description "Services for PowerShell Universal."

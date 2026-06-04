@@ -1,1 +1,0 @@
-﻿New-PSUApp -Name "Test Viewer" -Module "PowerShellUniversal.Apps.Pester" -Command 'New-UDPesterApp' -BaseUrl "/test-viewer" -Authenticated -AutoDeploy -Description "A Pester test result viewer for PowerShell Universal."
