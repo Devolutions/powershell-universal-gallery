@@ -4,7 +4,7 @@
     GUID              = '38b68761-cb28-4027-9d1c-0a571aeb1a96'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'HTTP REST APIs for dbatools.'
     RequiredModules   = @('dbatools')
     FunctionsToExport = @(

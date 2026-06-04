@@ -3,7 +3,7 @@
     GUID            = '1fa1033a-c34a-488e-8be8-94fbca7a808c'
     Author          = 'Devolutions, Inc.'
     CompanyName     = 'Devolutions, Inc.'
-    Copyright       = '(c) Ironman Software. All rights reserved.'
+    Copyright       = '(c) Devolutions, Inc. All rights reserved.'
     Description     = 'Azure Security integration for PowerShell Universal.'
     RequiredModules = @("Microsoft.Graph")
     PrivateData     = @{

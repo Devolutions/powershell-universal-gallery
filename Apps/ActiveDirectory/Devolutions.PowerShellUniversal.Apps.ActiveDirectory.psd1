@@ -4,7 +4,7 @@
     GUID          = '6027dd29-9af7-4b8d-a471-979b19aa342c'
     Author        = 'Devolutions, Inc.'
     CompanyName   = 'Devolutions, Inc.'
-    Copyright     = '(c) Ironman Software. All rights reserved.'
+    Copyright     = '(c) Devolutions, Inc. All rights reserved.'
     Description   = 'Active Directory tools built with PowerShell Universal. Reset passwords, restore deleted users, manage group membership and search for objects.'
     FileList      = @(".universal\dashboards.ps1")
     PrivateData   = @{

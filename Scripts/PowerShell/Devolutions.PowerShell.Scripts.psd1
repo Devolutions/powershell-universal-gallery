@@ -27,7 +27,7 @@
     CompanyName       = 'Devolutions, Inc.'
 
     # Copyright statement for this module
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description       = 'Scripts for working with PowerShell.'

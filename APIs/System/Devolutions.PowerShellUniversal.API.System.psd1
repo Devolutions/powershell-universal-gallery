@@ -3,7 +3,7 @@
     GUID          = '17fe83b8-1287-42cf-9b48-9227772f3a9a'
     Author        = 'Devolutions, Inc.'
     CompanyName   = 'Devolutions, Inc.'
-    Copyright     = '(c) Ironman Software. All rights reserved.'
+    Copyright     = '(c) Devolutions, Inc. All rights reserved.'
     Description   = 'Provides API endpoints for system information.'
     PrivateData   = @{
         PSData = @{

@@ -3,7 +3,7 @@
     GUID          = 'a09bbaf9-095b-49f6-9b70-ec9994ec155f'
     Author        = 'Devolutions, Inc.'
     CompanyName   = 'Devolutions, Inc.'
-    Copyright     = '(c) Ironman Software. All rights reserved.'
+    Copyright     = '(c) Devolutions, Inc. All rights reserved.'
     Description   = 'Adds a health check to ensure the server has internet access.'
     PrivateData   = @{
         PSData = @{

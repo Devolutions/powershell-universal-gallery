@@ -4,7 +4,7 @@
     GUID              = '68c73ac9-a77e-4360-8df4-cf91af025e6f'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Network utilities built with PowerShell Universal. Resolve DNS names, scan networks, and run speed tests.'
     FunctionsToExport = @(
         'New-NetworkUtilityApp'

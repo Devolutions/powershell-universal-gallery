@@ -4,7 +4,7 @@
     GUID              = 'f6d2e044-db46-4034-b5d8-3380ba4ec4b6'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'A collection of scripts for PowerShell Universal.'
     FunctionsToExport = @('Format-PSUJobDescription')
     PrivateData       = @{

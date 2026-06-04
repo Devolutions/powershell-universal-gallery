@@ -4,7 +4,7 @@
     GUID              = '77c9fc70-945c-4d59-a49c-e114ddf38edb'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Theme builder app for PowerShell Universal.'
     FunctionsToExport = @(
         'New-PSUThemeBuilderApp'

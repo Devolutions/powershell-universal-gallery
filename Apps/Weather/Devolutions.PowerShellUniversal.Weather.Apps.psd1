@@ -4,7 +4,7 @@
     GUID              = 'fdfa406e-855b-4b8f-bea2-7b6b87a8b2dc'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Weather components for PowerShell Universal Apps.'
     FunctionsToExport = @(
         'New-UDWeatherCard'

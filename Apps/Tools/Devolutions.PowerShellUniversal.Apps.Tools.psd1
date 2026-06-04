@@ -4,7 +4,7 @@
     GUID              = '6d700aa6-6e4e-45b2-ab28-2ee823ccdbb7'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'Tools for working with PowerShell apps.'
     FunctionsToExport = @(
         'New-UDCenter', 

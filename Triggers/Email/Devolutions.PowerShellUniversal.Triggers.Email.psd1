@@ -4,7 +4,7 @@
     GUID              = '98a690fe-523b-4d01-8015-409606de9a1f'
     Author            = 'Devolutions, Inc.'
     CompanyName       = 'Devolutions, Inc.'
-    Copyright         = '(c) Ironman Software, LLC. All rights reserved.'
+    Copyright         = '(c) Devolutions, Inc. All rights reserved.'
     Description       = 'A module that contains functions for sending emails when certain triggers take place in PowerShell Universal.'
     FunctionsToExport = @('Send-PSUTriggerEmail')
     RequiredModules   = @('Mailozaurr')
