@@ -43,7 +43,7 @@ jobs:
 
           try {
             $response = Invoke-RestMethod -Uri $uri -Headers $headers
-            $lastSync = $response.workflow_runs | Select-Object -ExpandProperty updated_at -First 1
+            $lastSync = $response.workflow_runs | Select-Object -ExpandProperty created_at -First 1
           }
           catch {
             Write-Warning "Unable to determine the last successful sync time. Falling back to a full scan. $_"
@@ -78,7 +78,8 @@ jobs:
 
           .\.github\scripts\Sync-PsGalleryManifest.ps1 @parameters
 
-          if (git diff --quiet -- manifest.json) {
+          git diff --quiet -- manifest.json
+          if ($LASTEXITCODE -eq 0) {
             'changed=false' >> $env:GITHUB_OUTPUT
             Write-Host 'No manifest changes detected.'
           }
