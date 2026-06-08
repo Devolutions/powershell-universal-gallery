@@ -15,6 +15,30 @@ npm install
 npm run build
 ```
 
+## Local harness workflow
+
+Framework iteration should run against the harness first.
+
+From this folder:
+
+```powershell
+npm install
+npm run harness
+```
+
+That builds the Ant Design bundle and starts the harness from [Apps/Frameworks/Harness](d:/git/powershell-universal-gallery/Apps/Frameworks/Harness) on `http://127.0.0.1:5057`.
+
+The harness sample definition already mounts this framework bundle and returns Ant Design descriptors, so local work can stay focused on the framework transport contract without starting full PSU.
+
+From [Apps/Frameworks](d:/git/powershell-universal-gallery/Apps/Frameworks), you can also use the shared launcher:
+
+```powershell
+.\Start-Framework.ps1 .\AntDesign
+.\Start-Framework.ps1 .\AntDesign -Build
+```
+
+The `-Build` switch runs the framework build before starting the harness.
+
 ## Module helpers
 
 Importing the PowerShell module exposes:
@@ -53,5 +77,21 @@ Inside PowerShell Universal, you can use:
 ```powershell
 New-AntDesignDemoApp
 ```
+
+For harness-hosted iteration, open `http://127.0.0.1:5057` after `npm run harness`.
+
+## Playwright
+
+Browser-level tests run against the harness by default.
+
+```powershell
+npm run test:e2e:install
+npm run test:e2e
+```
+
+The shared fixture in [Apps/Frameworks/AntDesign/testing/playwright/harnessFixture.ts](d:/git/powershell-universal-gallery/Apps/Frameworks/AntDesign/testing/playwright/harnessFixture.ts) drives server-push scenarios through the harness admin endpoints:
+
+- `POST /api/harness/messages`
+- `POST /api/harness/downloads/{id}`
 
 The runtime message handlers beyond bootstrap and connection status are left as the next slice of implementation work.

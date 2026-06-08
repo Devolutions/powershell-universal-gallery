@@ -3,6 +3,7 @@ export type DashboardPrimitive = string | number | boolean | null;
 export type DescriptorContent = DashboardPrimitive | DashboardDescriptor | DescriptorContent[];
 
 export type EndpointDescriptor = {
+  endpoint?: boolean | undefined;
   name: string;
   javaScript?: string | undefined;
   websocket?: boolean | undefined;

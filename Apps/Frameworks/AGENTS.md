@@ -204,6 +204,27 @@ The minimum useful automated coverage `SHOULD` prove:
 - descriptor-tree mutation behavior for `addElement`, `clearElement`, `removeElement`, and `syncElement`
 - download handling from `/api/internal/dashboard/download/{dashboardId}/{id}`
 
+## Development Harness
+
+Framework development and browser-level testing `SHOULD` use the local harness in `Apps/Frameworks/Harness` instead of requiring a full PSU runtime.
+
+The harness exists to host framework bundles against the documented dashboard contract with only the minimum server behavior a framework needs:
+
+- static asset hosting through published-folder style request paths
+- bootstrap over `/api/internal/dashboard`
+- HTTP component execution over `/api/internal/component/element/{id}`
+- session-state fallback over `/api/internal/component/element/sessionState/{requestId}`
+- downloads over `/api/internal/dashboard/download/{dashboardId}/{id}`
+- SignalR traffic over `/dashboardhub`
+- PowerShell-backed endpoint and event execution for local iteration
+
+Agent guidance:
+
+- framework authors `SHOULD` point their local shell, bundle, and static assets at the harness during development
+- Playwright and other browser-level tests `SHOULD` run against the harness by default
+- agents `SHOULD NOT` require a full PSU instance just to validate framework transport behavior, endpoint execution, or websocket message handling unless a test explicitly depends on PSU-only features outside this contract
+- if harness behavior is insufficient for a new framework need, extend the harness before introducing PSU runtime setup as the default workflow
+
 ## Asset Hosting Rules
 
 Baseline context:
@@ -690,13 +711,14 @@ A framework is conforming only if it provides all of the following:
 
 ## Suggested Delivery Sequence
 
-1. Serve a minimal bundle from a published folder.
-2. Fetch `/api/internal/dashboard` and render static descriptors.
-3. Reuse or reimplement `withComponentFeatures`.
-4. Support HTTP endpoint invocation.
-5. Support websocket connection and `setState`.
-6. Add `requestState`, `download`, and descriptor tree mutation messages.
-7. Add optional UX messages such as toast, modal, clipboard, and custom JS invocation.
+1. Start the harness in `Apps/Frameworks/Harness` and host the framework bundle there.
+2. Serve a minimal bundle from a published folder or harness-mounted static path.
+3. Fetch `/api/internal/dashboard` and render static descriptors.
+4. Reuse or reimplement `withComponentFeatures`.
+5. Support HTTP endpoint invocation.
+6. Support websocket connection and `setState`.
+7. Add `requestState`, `download`, and descriptor tree mutation messages.
+8. Add optional UX messages such as toast, modal, clipboard, and custom JS invocation.
 
 ## Agent Guidance
 
@@ -704,6 +726,7 @@ A framework is conforming only if it provides all of the following:
 - Treat `withComponentFeatures`, recursive descriptor rendering, and wrapped endpoint callbacks as the compatibility surface for component behavior.
 - Treat the websocket message names and payload shapes documented here as the source of truth for browser-side reactions.
 - Treat the documented HTTP endpoints and payloads as the source of truth for server communication.
+- Use `Apps/Frameworks/Harness` as the default development and Playwright host for framework work.
 - Use published folders for the framework's compiled assets unless lazy plugin loading is explicitly needed.
 - Do not assume the server will resolve and host your framework bundle automatically; ship the bundle with the module and expose it explicitly through a published folder.
 - Assume future agents may only have this document. Keep framework work anchored in the contracts and examples captured here rather than in private implementation details.
