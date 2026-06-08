@@ -28,7 +28,7 @@ npm run harness
 
 That builds the Ant Design bundle and starts the harness from [Apps/Frameworks/Harness](d:/git/powershell-universal-gallery/Apps/Frameworks/Harness) on `http://127.0.0.1:5057`.
 
-The harness sample definition already mounts this framework bundle and returns Ant Design descriptors, so local work can stay focused on the framework transport contract without starting full PSU.
+The AntDesign harness definition mounts this framework bundle and uses `New-AntDesignDemo` by default, so local work can stay focused on the framework transport contract without starting full PSU.
 
 From [Apps/Frameworks](d:/git/powershell-universal-gallery/Apps/Frameworks), you can also use the shared launcher:
 
@@ -52,6 +52,7 @@ Importing the PowerShell module exposes:
 
 The second helper returns deterministic asset paths for the compiled entrypoint.
 `New-AntDesignDemo` returns a small set of framework descriptors for smoke testing and demos. `New-AntDesignDemoApp` wraps that content in `New-UDApp` for PSU-hosted use.
+The `Endpoint` type used by interactive component helpers is supplied by PowerShell Universal or by the local harness runner.
 
 ## Scope of the scaffold
 
@@ -66,9 +67,9 @@ The current scaffold includes:
 
 ## Demo usage
 
-```powershell
-Import-Module .\Devolutions.PowerShellUniversal.Frameworks.AntDesign.psd1
+Load the module from PowerShell Universal or through the harness runner, then call:
 
+```powershell
 New-AntDesignDemo
 ```
 

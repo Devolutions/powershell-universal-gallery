@@ -6,6 +6,7 @@ namespace PowerShellUniversal.Frameworks.Harness.Hubs;
 
 public sealed class DashboardHub(
     HarnessDefinitionProvider definitionProvider,
+    HarnessEndpointRegistry endpointRegistry,
     HarnessPowerShellService powerShellService,
     HarnessRealtimeService realtimeService,
     HarnessObjectNormalizer normalizer,
@@ -73,7 +74,8 @@ public sealed class DashboardHub(
     {
         var definition = definitionProvider.GetDefinition();
         var endpointId = string.IsNullOrWhiteSpace(item.EventId) ? item.EventName : item.EventId;
-        if (!definition.TryResolveEndpointScript(endpointId, out var scriptPath))
+        if (!definition.TryResolveEndpointScript(endpointId, out var scriptPath)
+            && !endpointRegistry.TryResolveEndpointScript(endpointId, out scriptPath))
         {
             logger.LogWarning("No websocket endpoint script was configured for {EndpointId}", endpointId);
             return;

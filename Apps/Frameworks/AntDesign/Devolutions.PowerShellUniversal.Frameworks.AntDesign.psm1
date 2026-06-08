@@ -43,7 +43,7 @@ function New-UDAntDesignButton {
         [string]$Id = ([guid]::NewGuid().ToString()),
         [Parameter(Mandatory)]
         [string]$Text,
-        [object]$OnClick,
+        [Endpoint]$OnClick,
         [object]$Value
     )
 

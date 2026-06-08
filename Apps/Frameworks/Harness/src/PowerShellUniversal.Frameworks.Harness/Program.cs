@@ -25,6 +25,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSingleton<HarnessObjectNormalizer>();
 builder.Services.AddSingleton<HarnessDefinitionProvider>();
+builder.Services.AddSingleton<HarnessEndpointRegistry>();
 builder.Services.AddSingleton<HarnessRealtimeService>();
 builder.Services.AddSingleton<HarnessPowerShellService>();
 
@@ -84,11 +85,13 @@ app.MapMethods("/api/internal/component/element/{id}", new[] { "GET", "POST" }, 
     HttpContext httpContext,
     string id,
     HarnessDefinitionProvider provider,
+    HarnessEndpointRegistry endpointRegistry,
     HarnessPowerShellService powerShellService,
     IOptions<HarnessOptions> options) =>
 {
     var definition = provider.GetDefinition();
-    if (!definition.TryResolveEndpointScript(id, out var scriptPath))
+    if (!definition.TryResolveEndpointScript(id, out var scriptPath)
+        && !endpointRegistry.TryResolveEndpointScript(id, out scriptPath))
     {
         return Results.Json(new { });
     }

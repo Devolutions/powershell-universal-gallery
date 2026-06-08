@@ -22,7 +22,7 @@ export type DashboardDescriptor = {
 };
 
 export type DashboardBootstrap = {
-  dashboard: DashboardDescriptor;
+  dashboard: DescriptorContent;
   sessionId: string;
   pageId: string;
   authType?: string | undefined;

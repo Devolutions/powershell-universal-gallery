@@ -1,3 +1,4 @@
+import { message as antMessage } from 'antd';
 import type { ReactNode } from 'react';
 import { registerComponent, type RegisteredDashboardComponent } from './components';
 import { renderDescriptorNode } from './renderDescriptor';
@@ -188,12 +189,51 @@ function handleRedirect(payload: unknown) {
   }
 }
 
+function handleToast(payload: unknown) {
+  if (typeof payload === 'string' && payload.length > 0) {
+    void antMessage.info(payload);
+    return;
+  }
+
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+    return;
+  }
+
+  const record = payload as Record<string, unknown>;
+  const content = typeof record.message === 'string' ? record.message : null;
+  if (!content) {
+    return;
+  }
+
+  const duration = typeof record.duration === 'number' ? record.duration : undefined;
+  const type = typeof record.type === 'string' ? record.type : 'info';
+  const options = typeof duration === 'number' ? { content, duration } : { content };
+
+  switch (type) {
+    case 'success':
+      void antMessage.success(options);
+      return;
+    case 'warning':
+      void antMessage.warning(options);
+      return;
+    case 'error':
+      void antMessage.error(options);
+      return;
+    default:
+      void antMessage.info(options);
+      return;
+  }
+}
+
 export function setElementEventPublisher(publisher: EventPublisher | null) {
   publishElementEvent = publisher;
 }
 
 export function dispatchIncomingHubMessage(messageType: string, payload?: unknown) {
   switch (messageType) {
+    case 'toast':
+      handleToast(payload);
+      return;
     case 'download':
       handleDownload(payload);
       return;

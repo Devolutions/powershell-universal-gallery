@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import type { RuntimeMetadata } from '../config/runtime';
-import type { DashboardBootstrap, DashboardDescriptor } from '../types/dashboard';
+import type { DashboardBootstrap, DescriptorContent } from '../types/dashboard';
 
 export type ConnectionStatus = 'idle' | 'connecting' | 'connected' | 'reconnecting' | 'disconnected';
 
 type RuntimeStore = RuntimeMetadata & {
   connectionStatus: ConnectionStatus;
-  descriptorTree: DashboardDescriptor | null;
+  descriptorTree: DescriptorContent | null;
   componentState: Record<string, Record<string, unknown>>;
   dashboardName: string | null;
   roles: string[];

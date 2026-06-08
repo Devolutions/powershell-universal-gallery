@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { DashboardBootstrap, DashboardDescriptor, EndpointDescriptor } from '../types/dashboard';
+import type { DashboardBootstrap, EndpointDescriptor } from '../types/dashboard';
 
 export const endpointDescriptorSchema = z
   .object({
@@ -21,8 +21,19 @@ export const dashboardDescriptorSchema = z
   })
   .catchall(z.unknown());
 
+export const descriptorContentSchema: z.ZodTypeAny = z.lazy((): z.ZodTypeAny =>
+  z.union([
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.null(),
+    dashboardDescriptorSchema,
+    z.array(descriptorContentSchema),
+  ]),
+);
+
 export const dashboardBootstrapSchema = z.object({
-  dashboard: dashboardDescriptorSchema,
+  dashboard: descriptorContentSchema,
   sessionId: z.string(),
   pageId: z.string(),
   authType: z.string().optional(),

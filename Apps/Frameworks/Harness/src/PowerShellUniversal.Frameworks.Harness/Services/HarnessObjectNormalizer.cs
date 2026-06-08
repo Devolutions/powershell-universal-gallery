@@ -113,6 +113,11 @@ public sealed class HarnessObjectNormalizer
 
     private object NormalizeObject(object value)
     {
+        if (LooksLikeEndpointDescriptor(value))
+        {
+            return NormalizeEndpointDescriptor(value);
+        }
+
         var properties = value
             .GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -131,6 +136,44 @@ public sealed class HarnessObjectNormalizer
         }
 
         return result;
+    }
+
+    private object NormalizeEndpointDescriptor(object value)
+    {
+        var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
+        AddEndpointProperty(result, value, "endpoint");
+        AddEndpointProperty(result, value, "name");
+        AddEndpointProperty(result, value, "accept");
+        AddEndpointProperty(result, value, "contentType");
+        AddEndpointProperty(result, value, "websocket");
+        AddEndpointProperty(result, value, "javaScript");
+        return result;
+    }
+
+    private static bool LooksLikeEndpointDescriptor(object value)
+    {
+        var properties = value.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+        return properties.Any(property => string.Equals(property.Name, "endpoint", StringComparison.OrdinalIgnoreCase))
+            && properties.Any(property => string.Equals(property.Name, "name", StringComparison.OrdinalIgnoreCase));
+    }
+
+    private void AddEndpointProperty(Dictionary<string, object?> result, object value, string propertyName)
+    {
+        var property = value.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
+            .FirstOrDefault(candidate => string.Equals(candidate.Name, propertyName, StringComparison.OrdinalIgnoreCase));
+
+        if (property is null || !property.CanRead)
+        {
+            return;
+        }
+
+        var propertyValue = property.GetValue(value);
+        if (propertyValue is null)
+        {
+            return;
+        }
+
+        result[propertyName] = NormalizeForJson(propertyValue);
     }
 
     private object? NormalizeJsonElement(JsonElement element)

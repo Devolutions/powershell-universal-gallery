@@ -1,5 +1,5 @@
 @{
-    DashboardScript = Join-Path $HarnessScriptRoot '..\Harness\sample\dashboard.ps1'
+    DashboardScript = Join-Path $HarnessScriptRoot 'dashboard.ps1'
     EndpointRoot = Join-Path $HarnessScriptRoot '..\Harness\sample\endpoints'
     StaticAssets = @(
         @{

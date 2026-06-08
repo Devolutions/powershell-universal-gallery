@@ -1,15 +1,67 @@
 using System.Text;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using PowerShellUniversal.Frameworks.Harness.Models;
 
 namespace PowerShellUniversal.Frameworks.Harness.Services;
 
 public sealed class HarnessPowerShellService(
+    HarnessEndpointRegistry endpointRegistry,
     HarnessRealtimeService realtimeService,
     HarnessObjectNormalizer normalizer,
     ILogger<HarnessPowerShellService> logger)
 {
+    private readonly HarnessEndpointRegistry endpointRegistry = endpointRegistry;
+
     private const string HarnessPrelude = """
+$Body = $HarnessContext.Body
+$EventData = if ($null -ne $HarnessContext.EventData) {
+    $HarnessContext.EventData
+}
+elseif ($null -ne $HarnessContext.JsonBody) {
+    $HarnessContext.JsonBody
+}
+else {
+    $HarnessContext.Body
+}
+
+class Endpoint {
+    static [object]$Registry
+    [bool]$endpoint = $true
+    [string]$name
+    [string]$accept
+    [string]$contentType
+    hidden [scriptblock]$scriptBlock
+
+    Endpoint([scriptblock]$scriptBlock) {
+        $this.scriptBlock = $scriptBlock
+    }
+
+    [void] Register([string]$Id, [object]$Cmdlet) {
+        if ($null -eq $this.scriptBlock) {
+            throw 'Endpoint requires a script block.'
+        }
+
+        if (-not [string]::IsNullOrWhiteSpace($this.name)) {
+            return
+        }
+
+        if ($null -eq [Endpoint]::Registry) {
+            throw 'Endpoint registry has not been initialized for this runspace.'
+        }
+
+        $modulePaths = @(
+            Get-Module |
+                Where-Object { -not [string]::IsNullOrWhiteSpace($_.Path) } |
+                Select-Object -ExpandProperty Path -Unique
+        )
+
+        $this.name = [Endpoint]::Registry.RegisterEndpoint($Id, $this.scriptBlock.ToString(), $modulePaths)
+    }
+}
+
+[Endpoint]::Registry = $PsuHarness
+
 function Send-PSUHarnessMessage {
     [CmdletBinding()]
     param(
@@ -72,6 +124,25 @@ function Set-PSUHarnessSessionState {
 function Get-PSUHarnessConnections {
     $PsuHarness.GetConnections()
 }
+
+function Show-UDToast {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$Message,
+
+        [ValidateSet('info', 'success', 'warning', 'error')]
+        [string]$Type = 'info',
+
+        [double]$Duration = 4.5
+    )
+
+    Send-PSUHarnessMessage -MessageType 'toast' -Data @{
+        message = $Message
+        type = $Type
+        duration = $Duration
+    }
+}
 """;
 
     public async Task<object?> InvokeBootstrapAsync(string scriptPath, HarnessInvocationContext context)
@@ -96,7 +167,14 @@ function Get-PSUHarnessConnections {
 
         return await Task.Run(() =>
         {
+            var initialSessionState = InitialSessionState.CreateDefault2();
+            initialSessionState.ExecutionPolicy = Microsoft.PowerShell.ExecutionPolicy.Bypass;
+
+            using var runspace = RunspaceFactory.CreateRunspace(initialSessionState);
+            runspace.Open();
+
             using var powershell = PowerShell.Create();
+            powershell.Runspace = runspace;
             var scriptDirectory = Path.GetDirectoryName(scriptPath) ?? Directory.GetCurrentDirectory();
             var scriptContent = File.ReadAllText(scriptPath);
             powershell.Runspace.SessionStateProxy.SetVariable("PSScriptRoot", scriptDirectory);
@@ -104,7 +182,7 @@ function Get-PSUHarnessConnections {
             powershell.Runspace.SessionStateProxy.SetVariable("HarnessScriptRoot", scriptDirectory);
             powershell.Runspace.SessionStateProxy.SetVariable("HarnessScriptPath", scriptPath);
             powershell.Runspace.SessionStateProxy.SetVariable("HarnessContext", context);
-            powershell.Runspace.SessionStateProxy.SetVariable("PsuHarness", new PowerShellHarnessApi(realtimeService, context));
+            powershell.Runspace.SessionStateProxy.SetVariable("PsuHarness", new PowerShellHarnessApi(this, realtimeService, context));
             powershell.AddScript(HarnessPrelude, useLocalScope: false);
             powershell.AddScript($"Set-Location -LiteralPath '{scriptDirectory.Replace("'", "''")}'", useLocalScope: false);
             powershell.AddScript(scriptContent, useLocalScope: false);
@@ -148,7 +226,7 @@ function Get-PSUHarnessConnections {
         return bootstrap;
     }
 
-    private sealed class PowerShellHarnessApi(HarnessRealtimeService realtimeService, HarnessInvocationContext context)
+    private sealed class PowerShellHarnessApi(HarnessPowerShellService outer, HarnessRealtimeService realtimeService, HarnessInvocationContext context)
     {
         public void SendMessage(string messageType, object? data, string? connectionId, string? dashboardId)
         {
@@ -184,6 +262,11 @@ function Get-PSUHarnessConnections {
         public IReadOnlyList<HarnessConnection> GetConnections()
         {
             return realtimeService.GetConnections();
+        }
+
+        public string RegisterEndpoint(string componentId, string scriptContent, string[]? modulePaths)
+        {
+            return outer.endpointRegistry.RegisterEndpoint(componentId, scriptContent, modulePaths);
         }
     }
 }
