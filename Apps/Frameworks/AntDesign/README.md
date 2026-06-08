@@ -47,6 +47,7 @@ Importing the PowerShell module exposes:
 - `Get-PSUAntDesignFrameworkEntryPoint`
 - `New-UDAntDesignText`
 - `New-UDAntDesignButton`
+- `New-UDAntDesignTypography`
 - `Show-AntDesignMessage`
 - `New-AntDesignDemo`
 - `New-AntDesignDemoApp`
@@ -76,7 +77,7 @@ Load the module from PowerShell Universal or through the harness runner, then ca
 New-AntDesignDemo
 ```
 
-The default demo now opens an Ant Design-style docs experience. The button page is generated from `New-UDAntDesignButton` comment-based help, and the preview cards are rendered by executing those documented examples.
+The default demo now opens an Ant Design-style docs experience. The button and typography pages are generated from comment-based help, and the preview cards are rendered by executing those documented examples.
 
 Inside PowerShell Universal, you can use:
 

@@ -11,6 +11,7 @@
         'Get-PSUAntDesignFrameworkEntryPoint',
         'New-UDAntDesignText',
         'New-UDAntDesignButton',
+        'New-UDAntDesignTypography',
         'Show-AntDesignMessage',
         'New-AntDesignDemo',
         'New-AntDesignDemoApp'
