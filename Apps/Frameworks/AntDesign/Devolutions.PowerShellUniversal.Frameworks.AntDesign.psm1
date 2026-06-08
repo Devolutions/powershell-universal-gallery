@@ -110,6 +110,24 @@ function ConvertFrom-AntDesignExampleBlock {
     }
 }
 
+function ConvertFrom-AntDesignHelpList {
+    [CmdletBinding()]
+    param(
+        [string]$Text
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Text)) {
+        return @()
+    }
+
+    @(
+        $Text -split "`r?`n" |
+            ForEach-Object { $_.Trim() } |
+            Where-Object { -not [string]::IsNullOrWhiteSpace($_) } |
+            ForEach-Object { $_ -replace '^[\-\*\u2022]\s*', '' }
+    )
+}
+
 function ConvertFrom-AntDesignHelpBlock {
     [CmdletBinding()]
     param(
@@ -123,6 +141,7 @@ function ConvertFrom-AntDesignHelpBlock {
     $result = [ordered]@{
         Synopsis    = ''
         Description = ''
+        Notes       = ''
         Parameters  = @{}
         Examples    = @()
     }
@@ -155,6 +174,9 @@ function ConvertFrom-AntDesignHelpBlock {
             'Description' {
                 $result['Description'] = $value
             }
+            'Notes' {
+                $result['Notes'] = $value
+            }
             'Parameter' {
                 $result.Parameters[$Name] = ($SectionBuffer.ToArray() -join ' ').Trim()
             }
@@ -178,6 +200,10 @@ function ConvertFrom-AntDesignHelpBlock {
                 }
                 'DESCRIPTION' {
                     $currentSection = 'Description'
+                    $currentName = $null
+                }
+                'NOTES' {
+                    $currentSection = 'Notes'
                     $currentName = $null
                 }
                 'PARAMETER' {
@@ -295,6 +321,7 @@ function Get-AntDesignComponentDocumentation {
         commandName = $CommandName
         summary    = $help.Synopsis
         description = $help.Description
+        whenToUse  = @(ConvertFrom-AntDesignHelpList -Text $help.Notes)
         sourceUrl  = $SourceUrl
         parameters = @(Get-AntDesignCommandParameters -CommandName $CommandName -HelpParameters $help.Parameters)
         examples   = @($examples)
@@ -307,7 +334,13 @@ function New-UDAntDesignButton {
     Creates an Ant Design button descriptor.
 
     .DESCRIPTION
-    Creates an antd-button descriptor that maps the PowerShell command surface to the core Ant Design Button TypeScript definition used by the client runtime.
+    Creates an antd-button descriptor that maps the PowerShell command surface to the core Ant Design Button TypeScript definition used by the client runtime. The command mirrors the Ant Design Button API closely so the documented PowerShell examples can follow the same usage patterns as the upstream docs.
+
+    .NOTES
+    A button represents an operation or a short sequence of operations.
+    Use a primary button for the main action in a section, and keep it to one primary action when possible.
+    Use default buttons for secondary actions, dashed buttons for add-more style actions, text buttons for the least prominent actions, and link buttons for navigation.
+    Use danger for destructive actions, ghost when the button sits on a strong background, disabled when the action is unavailable, and loading to prevent repeated submissions.
 
     .PARAMETER Id
     Specifies the component identifier used by PowerShell Universal for state and event routing.
@@ -385,34 +418,119 @@ function New-UDAntDesignButton {
     Specifies the value sent back through the click event payload.
 
     .EXAMPLE
-    # Primary button
-    New-UDAntDesignButton -Text 'Primary action' -Type primary
+    # Syntactic sugar
+    @(
+        New-UDAntDesignButton -Text 'Primary Button' -Type primary
+        New-UDAntDesignButton -Text 'Default Button' -Type default
+        New-UDAntDesignButton -Text 'Dashed Button' -Type dashed
+        New-UDAntDesignButton -Text 'Text Button' -Type text
+        New-UDAntDesignButton -Text 'Link Button' -Type link -Href 'https://ant.design/components/button/'
+    )
 
-    Creates a primary Ant Design button using the legacy type shortcut.
-
-    .EXAMPLE
-    # Destructive block button
-    New-UDAntDesignButton -Text 'Delete account' -Color danger -Variant solid -Danger -Block
-
-    Creates a full-width destructive action button.
-
-    .EXAMPLE
-    # Link button
-    New-UDAntDesignButton -Text 'Open Ant Design' -Type link -Href 'https://ant.design/components/button/'
-
-    Creates a button that renders as a link.
+    Uses the Ant Design type shortcuts to mirror the core button styles from the upstream docs.
 
     .EXAMPLE
-    # Loading round button
-    New-UDAntDesignButton -Text 'Loading' -Shape round -Loading -Size large
+    # Color and variant
+    @(
+        New-UDAntDesignButton -Text 'Primary Solid' -Color primary -Variant solid
+        New-UDAntDesignButton -Text 'Default Outlined' -Color default -Variant outlined
+        New-UDAntDesignButton -Text 'Success Filled' -Color green -Variant filled
+        New-UDAntDesignButton -Text 'Danger Text' -Color danger -Variant text -Danger
+        New-UDAntDesignButton -Text 'Geekblue Link' -Color geekblue -Variant link -Href 'https://ant.design/components/button/'
+    )
 
-    Creates a rounded loading button.
+    Combines color and variant to show the newer styling model behind the Ant Design type aliases.
 
     .EXAMPLE
-    # Icon button
-    New-UDAntDesignButton -Text 'Download' -Type primary -Icon 'DownloadOutlined' -IconPosition end
+    # Icon
+    @(
+        New-UDAntDesignButton -Text 'Search Primary' -Type primary -Icon 'SearchOutlined'
+        New-UDAntDesignButton -Text 'Download File' -Icon 'DownloadOutlined'
+        New-UDAntDesignButton -Text 'External Link' -Type link -Icon 'LinkOutlined' -Href 'https://ant.design/components/button/'
+    )
 
-    Creates a primary button that renders an Ant Design icon.
+    Adds Ant Design icons through the PowerShell command surface while keeping the same button API.
+
+    .EXAMPLE
+    # Icon placement
+    @(
+        New-UDAntDesignButton -Text 'Search Start' -Type primary -Icon 'SearchOutlined' -IconPosition start
+        New-UDAntDesignButton -Text 'Search End' -Type primary -Icon 'SearchOutlined' -IconPosition end
+    )
+
+    Moves the icon before or after the label to match the icon placement examples from the docs.
+
+    .EXAMPLE
+    # Size
+    @(
+        New-UDAntDesignButton -Text 'Large Action' -Type primary -Size large
+        New-UDAntDesignButton -Text 'Medium Action' -Type default -Size middle
+        New-UDAntDesignButton -Text 'Small Action' -Type dashed -Size small
+    )
+
+    Shows the three Ant Design button sizes exposed by the PowerShell wrapper.
+
+    .EXAMPLE
+    # Disabled
+    @(
+        New-UDAntDesignButton -Text 'Primary Disabled' -Type primary -Disabled
+        New-UDAntDesignButton -Text 'Default Disabled' -Type default -Disabled
+        New-UDAntDesignButton -Text 'Dashed Disabled' -Type dashed -Disabled
+        New-UDAntDesignButton -Text 'Text Disabled' -Type text -Disabled
+        New-UDAntDesignButton -Text 'Link Disabled' -Type link -Disabled -Href 'https://ant.design/components/button/'
+    )
+
+    Disables each style to document the unavailable state consistently.
+
+    .EXAMPLE
+    # Loading
+    @(
+        New-UDAntDesignButton -Text 'Saving Changes' -Type primary -Loading
+        New-UDAntDesignButton -Text 'Queued Request' -Loading -LoadingDelay 400
+        New-UDAntDesignButton -Text 'Syncing Data' -Type default -Loading -LoadingIcon 'LoadingOutlined'
+    )
+
+    Uses loading states to communicate in-progress work and to discourage repeated clicks.
+
+    .EXAMPLE
+    # Multiple buttons
+    @(
+        New-UDAntDesignButton -Text 'Primary Action' -Type primary
+        New-UDAntDesignButton -Text 'Secondary Action' -Type default
+        New-UDAntDesignButton -Text 'More Actions' -Type dashed -Icon 'EllipsisOutlined'
+    )
+
+    Follows the Ant Design guidance of one primary action plus secondary actions in the same group.
+
+    .EXAMPLE
+    # Ghost button
+    @(
+        New-UDAntDesignButton -Text 'Ghost Primary' -Type primary -Ghost
+        New-UDAntDesignButton -Text 'Ghost Default' -Type default -Ghost
+        New-UDAntDesignButton -Text 'Ghost Dashed' -Type dashed -Ghost
+    )
+
+    Shows the transparent ghost treatment that is useful on stronger or more colorful backgrounds.
+
+    .EXAMPLE
+    # Danger buttons
+    @(
+        New-UDAntDesignButton -Text 'Delete Record' -Type primary -Danger
+        New-UDAntDesignButton -Text 'Danger Default' -Type default -Danger
+        New-UDAntDesignButton -Text 'Danger Text' -Type text -Danger
+        New-UDAntDesignButton -Text 'Danger Link' -Type link -Danger -Href 'https://ant.design/components/button/'
+    )
+
+    Applies the danger treatment for destructive or high-risk actions.
+
+    .EXAMPLE
+    # Block button
+    @(
+        New-UDAntDesignButton -Text 'Full Width Primary' -Type primary -Block
+        New-UDAntDesignButton -Text 'Full Width Default' -Type default -Block
+    )
+
+    Expands buttons to the available width to match the block layout from the Ant Design docs.
     #>
     [CmdletBinding()]
     [OutputType([hashtable])]

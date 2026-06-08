@@ -30,6 +30,7 @@ type AntdDocsComponent = {
   sourceUrl?: string;
   summary?: string;
   title: string;
+  whenToUse?: string[];
 };
 
 type AntdDocsProps = {
@@ -192,11 +193,23 @@ function ComponentPage({ component }: { component: AntdDocsComponent }) {
         </Space>
       </Card>
 
+      {component.whenToUse && component.whenToUse.length > 0 ? (
+        <Card className="docs-section-card" title="When To Use">
+          <Space direction="vertical" size={12} style={{ width: '100%' }}>
+            {component.whenToUse.map((item) => (
+              <Typography.Paragraph key={`${component.key}-${item}`}>{item}</Typography.Paragraph>
+            ))}
+          </Space>
+        </Card>
+      ) : null}
+
       <Space className="docs-example-list" direction="vertical" size={24}>
         {(component.examples ?? []).map((example) => (
           <Card key={`${component.key}-${example.title}`} className="docs-section-card" title={example.title}>
             <Space direction="vertical" size={16} style={{ width: '100%' }}>
-              <div className="docs-preview-surface">{typeof example.preview === 'undefined' ? null : renderDescriptorNode(example.preview)}</div>
+              <div className={`docs-preview-surface${component.key === 'button' ? ' docs-preview-surface-button' : ''}`}>
+                {typeof example.preview === 'undefined' ? null : renderDescriptorNode(example.preview)}
+              </div>
               {example.description ? <Typography.Paragraph>{example.description}</Typography.Paragraph> : null}
               <pre className="docs-code-block">
                 <code>{example.code}</code>
