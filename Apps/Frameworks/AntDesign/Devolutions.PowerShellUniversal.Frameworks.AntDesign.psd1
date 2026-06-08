@@ -8,7 +8,11 @@
     Description       = 'Ant Design dashboard framework scaffold for PowerShell Universal.'
     FunctionsToExport = @(
         'Get-PSUAntDesignFrameworkAssetBasePath',
-        'Get-PSUAntDesignFrameworkEntryPoint'
+        'Get-PSUAntDesignFrameworkEntryPoint',
+        'New-UDAntDesignText',
+        'New-UDAntDesignButton',
+        'New-AntDesignDemo',
+        'New-AntDesignDemoApp'
     )
     PrivateData       = @{
         PSData = @{
