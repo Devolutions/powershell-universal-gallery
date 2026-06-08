@@ -1,5 +1,6 @@
 import { withComponentFeatures } from 'universal-dashboard';
 import { AntdButton } from '../components/AntdButton';
+import { AntdCheckbox } from '../components/AntdCheckbox';
 import { AntdDocs } from '../components/AntdDocs';
 import { AntdRate } from '../components/AntdRate';
 import { AntdText } from '../components/AntdText';
@@ -19,6 +20,7 @@ export function registerBuiltins() {
   }
 
   registerComponent('antd-button', wrapWithFeatures(AntdButton as RegisteredDashboardComponent));
+  registerComponent('antd-checkbox', wrapWithFeatures(AntdCheckbox as RegisteredDashboardComponent));
   registerComponent('antd-docs', wrapWithFeatures(AntdDocs as RegisteredDashboardComponent));
   registerComponent('antd-rate', wrapWithFeatures(AntdRate as RegisteredDashboardComponent));
   registerComponent('antd-switch', wrapWithFeatures(AntdSwitch as RegisteredDashboardComponent));

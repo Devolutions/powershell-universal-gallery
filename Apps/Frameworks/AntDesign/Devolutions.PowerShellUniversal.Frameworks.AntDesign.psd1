@@ -11,6 +11,7 @@
         'Get-PSUAntDesignFrameworkEntryPoint',
         'New-UDAntDesignText',
         'New-UDAntDesignButton',
+        'New-UDAntDesignCheckbox',
         'New-UDAntDesignRate',
         'New-UDAntDesignSwitch',
         'New-UDAntDesignTypography',
