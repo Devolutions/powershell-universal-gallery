@@ -51,7 +51,7 @@ Importing the PowerShell module exposes:
 - `New-AntDesignDemoApp`
 
 The second helper returns deterministic asset paths for the compiled entrypoint.
-`New-AntDesignDemo` returns a small set of framework descriptors for smoke testing and demos. `New-AntDesignDemoApp` wraps that content in `New-UDApp` for PSU-hosted use.
+`New-AntDesignDemo` returns a component documentation shell for the framework, with per-component pages and live examples generated from the module comment-based help. `New-AntDesignDemoApp` wraps that content in `New-UDApp` for PSU-hosted use.
 The `Endpoint` type used by interactive component helpers is supplied by PowerShell Universal or by the local harness runner.
 
 ## Scope of the scaffold
@@ -64,6 +64,7 @@ The current scaffold includes:
 - dashboard bootstrap over `/api/internal/dashboard`
 - SignalR connection scaffolding for `/dashboardhub`
 - a global component registry plus initial Ant Design components wrapped by `withComponentFeatures`
+- a help-driven component documentation shell with live previews for the documented examples
 
 ## Demo usage
 
@@ -72,6 +73,8 @@ Load the module from PowerShell Universal or through the harness runner, then ca
 ```powershell
 New-AntDesignDemo
 ```
+
+The default demo now opens an Ant Design-style docs experience. The button page is generated from `New-UDAntDesignButton` comment-based help, and the preview cards are rendered by executing those documented examples.
 
 Inside PowerShell Universal, you can use:
 

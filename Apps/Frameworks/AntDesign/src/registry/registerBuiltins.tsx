@@ -1,5 +1,6 @@
 import { withComponentFeatures } from 'universal-dashboard';
 import { AntdButton } from '../components/AntdButton';
+import { AntdDocs } from '../components/AntdDocs';
 import { AntdText } from '../components/AntdText';
 import { registerComponent, type RegisteredDashboardComponent } from './components';
 
@@ -15,6 +16,7 @@ export function registerBuiltins() {
   }
 
   registerComponent('antd-button', wrapWithFeatures(AntdButton as RegisteredDashboardComponent));
+  registerComponent('antd-docs', wrapWithFeatures(AntdDocs as RegisteredDashboardComponent));
   registerComponent('antd-text', wrapWithFeatures(AntdText as RegisteredDashboardComponent));
   isRegistered = true;
 }

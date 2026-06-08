@@ -2,14 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import path from 'node:path';
 
 const harnessUrl = process.env.PSU_HARNESS_URL ?? 'http://127.0.0.1:5057';
-const harnessProject = path.join(
-  process.cwd(),
-  '..',
-  'Harness',
-  'src',
-  'PowerShellUniversal.Frameworks.Harness',
-  'PowerShellUniversal.Frameworks.Harness.csproj',
-);
+const harnessDefinitionPath = path.join(process.cwd(), 'harness.ps1');
 
 export default defineConfig({
   testDir: './testing/playwright',
@@ -20,8 +13,12 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: `npm run build && dotnet run --project ${JSON.stringify(harnessProject)} --urls ${harnessUrl}`,
+    command: 'npm run harness',
     cwd: process.cwd(),
+    env: {
+      ...process.env,
+      Harness__DefinitionPath: harnessDefinitionPath,
+    },
     url: harnessUrl,
     reuseExistingServer: true,
     timeout: 180000,

@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "harness": "npm run build && dotnet run --project ../Harness/src/PowerShellUniversal.Frameworks.Harness/PowerShellUniversal.Frameworks.Harness.csproj --urls http://127.0.0.1:5057",
+    "harness": "node ./scripts/runHarness.mjs",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:install": "playwright install chromium"
