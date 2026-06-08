@@ -10,7 +10,7 @@ type AntdDocsParameter = {
   name: string;
   required?: boolean;
   type?: string;
-  validValues?: string[];
+  validValues?: string | string[];
 };
 
 type AntdDocsExample = {
@@ -85,6 +85,14 @@ function useDocsRoute(components: AntdDocsComponent[]) {
 }
 
 function ParameterTable({ parameters }: { parameters: AntdDocsParameter[] }) {
+  const normalizeValidValues = (validValues?: string | string[]) => {
+    if (typeof validValues === 'undefined') {
+      return [];
+    }
+
+    return Array.isArray(validValues) ? validValues : [validValues];
+  };
+
   const columns: TableColumnsType<AntdDocsParameter> = [
     {
       dataIndex: 'name',
@@ -110,18 +118,22 @@ function ParameterTable({ parameters }: { parameters: AntdDocsParameter[] }) {
     {
       dataIndex: 'description',
       key: 'description',
-      render: (value?: string, record?: AntdDocsParameter) => (
-        <Space direction="vertical" size={4}>
-          <Typography.Text>{value ?? 'No description available.'}</Typography.Text>
-          {record?.validValues && record.validValues.length > 0 ? (
+      render: (value?: string, record?: AntdDocsParameter) => {
+        const validValues = normalizeValidValues(record?.validValues);
+
+        return (
+          <Space direction="vertical" size={4}>
+            <Typography.Text>{value ?? 'No description available.'}</Typography.Text>
+            {validValues.length > 0 ? (
             <Space size={[4, 4]} wrap>
-              {record.validValues.map((validValue) => (
-                <Tag key={`${record.name}-${validValue}`}>{validValue}</Tag>
+                {validValues.map((validValue) => (
+                <Tag key={`${record?.name ?? 'parameter'}-${validValue}`}>{validValue}</Tag>
               ))}
             </Space>
-          ) : null}
-        </Space>
-      ),
+            ) : null}
+          </Space>
+        );
+      },
       title: 'Description',
     },
   ];

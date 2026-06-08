@@ -12,6 +12,7 @@
         'New-UDAntDesignText',
         'New-UDAntDesignButton',
         'New-UDAntDesignCheckbox',
+        'New-UDAntDesignInput',
         'New-UDAntDesignRate',
         'New-UDAntDesignSwitch',
         'New-UDAntDesignTypography',
