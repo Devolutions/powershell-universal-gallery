@@ -53,18 +53,20 @@ The following tags are used to categorize modules in PowerShell Universal
 
 ### Naming Conventions
 
-We recommend naming your modules so they are discoverable. Consider prefixing with `Devolutions`, followed by the category of the features, and followed by the specific implementation. 
+We recommend naming your modules so they are discoverable. Consider prefixing with `PowerShellUniversal` or `Author.PowerShellUniversal`, followed by the category of the features, and followed by the specific implementation. 
 
 ```
-Devolutions.{Feature}.{Implementation}
+PowerShellUniversal.{Feature}.{Implementation}
+{Author}.PowerShellUniversal.{Feature}.{Implementation}
 ```
 
 For example: 
 
 ```
-Devolutions.PowerShellUniversal.Scripts.ActiveDirectory
-Devolutions.PowerShellUniversal.Triggers.Slack
-Devolutions.PowerShellUniversal.Widgets.Weather
+PowerShellUniversal.Scripts.ActiveDirectory
+PowerShellUniversal.Triggers.Slack
+PowerShellUniversal.Widgets.Weather
+AdamDriscoll.PowerShellUniversal.Widgets.Weather
 ```
 
 Some modules do not follow this convention, but we recommend it for discoverability.
