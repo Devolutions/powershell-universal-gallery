@@ -22,6 +22,7 @@ Export-ModuleMember -Function @(
     'Get-PSUAntDesignFrameworkEntryPoint',
     'New-UDAntDesignText',
     'New-UDAntDesignButton',
+    'New-UDAntDesignSwitch',
     'New-UDAntDesignTypography',
     'Show-AntDesignMessage',
     'New-AntDesignDemo',

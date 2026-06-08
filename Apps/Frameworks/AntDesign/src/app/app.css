@@ -185,6 +185,11 @@ body {
   flex: 0 0 auto;
 }
 
+.docs-preview-surface > .ant-switch {
+  align-self: flex-start;
+  width: auto;
+}
+
 .docs-code-block {
   overflow-x: auto;
   margin: 0;
