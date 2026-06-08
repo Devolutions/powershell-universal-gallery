@@ -5,6 +5,7 @@ import type { DashboardBootstrap, DescriptorContent } from '../types/dashboard';
 export type ConnectionStatus = 'idle' | 'connecting' | 'connected' | 'reconnecting' | 'disconnected';
 
 type RuntimeStore = RuntimeMetadata & {
+  connectionId: string | null;
   connectionStatus: ConnectionStatus;
   descriptorTree: DescriptorContent | null;
   componentState: Record<string, Record<string, unknown>>;
@@ -15,6 +16,7 @@ type RuntimeStore = RuntimeMetadata & {
   transportError: string | null;
   initializeShell: (metadata: RuntimeMetadata) => void;
   setBootstrap: (bootstrap: DashboardBootstrap) => void;
+  setConnectionId: (connectionId: string | null) => void;
   setConnectionStatus: (status: ConnectionStatus, error?: string | null) => void;
   setComponentState: (componentId: string, state: Record<string, unknown>) => void;
   getComponentState: (componentId: string) => Record<string, unknown> | null;
@@ -29,6 +31,7 @@ const initialMetadata: RuntimeMetadata = {
 
 export const useRuntimeStore = create<RuntimeStore>((set, get) => ({
   ...initialMetadata,
+  connectionId: null,
   connectionStatus: 'idle',
   descriptorTree: null,
   componentState: {},
@@ -48,6 +51,9 @@ export const useRuntimeStore = create<RuntimeStore>((set, get) => ({
       roles: bootstrap.roles ?? [],
       sessionId: bootstrap.sessionId,
     });
+  },
+  setConnectionId: (connectionId) => {
+    set({ connectionId });
   },
   setConnectionStatus: (status, error = null) => {
     set({

@@ -103,6 +103,18 @@ async function request(
 ): Promise<unknown> {
   const baseUrl = useRuntimeStore.getState().baseUrl;
   const requestHeaders = new Headers(headers);
+
+  if (
+    method === 'POST'
+    && path.startsWith('/api/internal/component/element/')
+    && !requestHeaders.has('UDConnectionId')
+  ) {
+    const connectionId = useRuntimeStore.getState().connectionId;
+    if (connectionId) {
+      requestHeaders.set('UDConnectionId', connectionId);
+    }
+  }
+
   const requestBody = method === 'GET' ? undefined : createRequestBody(body, requestHeaders);
   const requestInit: RequestInit = {
     method,
@@ -189,7 +201,7 @@ function handleRedirect(payload: unknown) {
   }
 }
 
-function handleToast(payload: unknown) {
+function handleAntDesignMessage(payload: unknown) {
   if (typeof payload === 'string' && payload.length > 0) {
     void antMessage.info(payload);
     return;
@@ -200,14 +212,24 @@ function handleToast(payload: unknown) {
   }
 
   const record = payload as Record<string, unknown>;
-  const content = typeof record.message === 'string' ? record.message : null;
+  const content = typeof record.content === 'string'
+    ? record.content
+    : typeof record.message === 'string'
+      ? record.message
+      : null;
+
   if (!content) {
     return;
   }
 
   const duration = typeof record.duration === 'number' ? record.duration : undefined;
+  const key = typeof record.key === 'string' || typeof record.key === 'number' ? record.key : undefined;
   const type = typeof record.type === 'string' ? record.type : 'info';
-  const options = typeof duration === 'number' ? { content, duration } : { content };
+  const options = {
+    content,
+    ...(typeof duration === 'number' ? { duration } : {}),
+    ...(typeof key !== 'undefined' ? { key } : {}),
+  };
 
   switch (type) {
     case 'success':
@@ -218,6 +240,9 @@ function handleToast(payload: unknown) {
       return;
     case 'error':
       void antMessage.error(options);
+      return;
+    case 'loading':
+      void antMessage.loading(options);
       return;
     default:
       void antMessage.info(options);
@@ -231,8 +256,8 @@ export function setElementEventPublisher(publisher: EventPublisher | null) {
 
 export function dispatchIncomingHubMessage(messageType: string, payload?: unknown) {
   switch (messageType) {
-    case 'toast':
-      handleToast(payload);
+    case 'antdesign-message':
+      handleAntDesignMessage(payload);
       return;
     case 'download':
       handleDownload(payload);

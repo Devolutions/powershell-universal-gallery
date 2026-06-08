@@ -25,6 +25,50 @@ else {
     $HarnessContext.Body
 }
 
+$ConnectionId = $HarnessContext.ConnectionId
+$DashboardId = $HarnessContext.DashboardId
+$SessionId = $HarnessContext.SessionId
+$PageId = $HarnessContext.PageId
+
+$DashboardHub = [pscustomobject]@{}
+$DashboardHub | Add-Member -MemberType ScriptMethod -Name SendWebSocketMessage -Value {
+    param(
+        [Parameter(Mandatory)]
+        [object]$Arg1,
+
+        [Parameter(Mandatory)]
+        [object]$Arg2,
+
+        [Parameter()]
+        [object]$Arg3
+    )
+
+    if ($PSBoundParameters.ContainsKey('Arg3')) {
+        $PsuHarness.SendMessage([string]$Arg2, $Arg3, [string]$Arg1, $DashboardId)
+        return
+    }
+
+    $PsuHarness.SendMessage([string]$Arg1, $Arg2, $null, $DashboardId)
+}
+
+$DashboardHub | Add-Member -MemberType ScriptMethod -Name SendMessage -Value {
+    param(
+        [Parameter(Mandatory)]
+        [string]$MessageType,
+
+        [Parameter()]
+        $Data,
+
+        [Parameter()]
+        [string]$ConnectionId,
+
+        [Parameter()]
+        [string]$DashboardId
+    )
+
+    $PsuHarness.SendMessage($MessageType, $Data, $ConnectionId, $DashboardId)
+}
+
 class Endpoint {
     static [object]$Registry
     [bool]$endpoint = $true

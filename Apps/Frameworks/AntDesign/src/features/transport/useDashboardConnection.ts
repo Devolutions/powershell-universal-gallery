@@ -4,6 +4,7 @@ import { dispatchIncomingHubMessage, setElementEventPublisher } from '../../regi
 import { useRuntimeStore } from '../../state/runtimeStore';
 
 const incomingHubMessages = [
+  'antdesign-message',
   'setState',
   'requestState',
   'addElement',
@@ -22,6 +23,7 @@ export function useDashboardConnection() {
   const pageId = useRuntimeStore((state) => state.pageId);
   const sessionId = useRuntimeStore((state) => state.sessionId);
   const timezone = useRuntimeStore((state) => state.timezone);
+  const setConnectionId = useRuntimeStore((state) => state.setConnectionId);
   const setConnectionStatus = useRuntimeStore((state) => state.setConnectionStatus);
 
   useEffect(() => {
@@ -48,16 +50,20 @@ export function useDashboardConnection() {
     }
 
     setConnectionStatus('connecting');
+    setConnectionId(null);
 
     connection.onreconnecting((error) => {
+      setConnectionId(null);
       setConnectionStatus('reconnecting', error?.message ?? null);
     });
 
-    connection.onreconnected(() => {
+    connection.onreconnected((connectionId) => {
+      setConnectionId(connectionId ?? connection.connectionId ?? null);
       setConnectionStatus('connected');
     });
 
     connection.onclose((error) => {
+      setConnectionId(null);
       setConnectionStatus('disconnected', error?.message ?? null);
     });
 
@@ -66,11 +72,13 @@ export function useDashboardConnection() {
     void connection.start().then(
       () => {
         if (!isDisposed) {
+          setConnectionId(connection.connectionId ?? null);
           setConnectionStatus('connected');
         }
       },
       (error: unknown) => {
         if (!isDisposed) {
+          setConnectionId(null);
           const message = error instanceof Error ? error.message : 'SignalR connection failed.';
           setConnectionStatus('disconnected', message);
         }
@@ -80,11 +88,12 @@ export function useDashboardConnection() {
     return () => {
       isDisposed = true;
       setElementEventPublisher(null);
+      setConnectionId(null);
       for (const messageType of incomingHubMessages) {
         connection.off(messageType);
       }
       setConnectionStatus('disconnected');
       void connection.stop();
     };
-  }, [baseUrl, dashboardId, pageId, sessionId, setConnectionStatus, timezone]);
+  }, [baseUrl, dashboardId, pageId, sessionId, setConnectionId, setConnectionStatus, timezone]);
 }

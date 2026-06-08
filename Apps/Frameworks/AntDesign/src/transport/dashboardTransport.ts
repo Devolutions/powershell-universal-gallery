@@ -1,6 +1,7 @@
 import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import { parseDashboardBootstrap } from '../schema/dashboard';
 import type { DashboardBootstrap, EndpointDescriptor } from '../types/dashboard';
+import { useRuntimeStore } from '../state/runtimeStore';
 
 type ConnectionInput = {
   baseUrl: string;
@@ -86,12 +87,14 @@ export async function invokeComponentEndpoint(
   const query = new URLSearchParams(options?.query ?? {});
   const querySuffix = query.size > 0 ? `?${query.toString()}` : '';
   const contentType = body instanceof FormData ? undefined : endpoint.contentType;
+  const connectionId = useRuntimeStore.getState().connectionId;
   const requestBody = createRequestBody(body, contentType);
   const requestInit: RequestInit = {
     method: 'POST',
     credentials: 'include',
     headers: {
       Accept: endpoint.accept ?? 'application/json',
+      ...(connectionId ? { UDConnectionId: connectionId } : {}),
       ...(contentType ? { 'Content-Type': contentType } : {}),
     },
   };

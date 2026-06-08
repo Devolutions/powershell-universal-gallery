@@ -47,6 +47,7 @@ Importing the PowerShell module exposes:
 - `Get-PSUAntDesignFrameworkEntryPoint`
 - `New-UDAntDesignText`
 - `New-UDAntDesignButton`
+- `Show-AntDesignMessage`
 - `New-AntDesignDemo`
 - `New-AntDesignDemoApp`
 
@@ -63,6 +64,7 @@ The current scaffold includes:
 - descriptor schemas and runtime state store
 - dashboard bootstrap over `/api/internal/dashboard`
 - SignalR connection scaffolding for `/dashboardhub`
+- server-push support for Ant Design global messages via `Show-AntDesignMessage`
 - a global component registry plus initial Ant Design components wrapped by `withComponentFeatures`
 - a help-driven component documentation shell with live previews for the documented examples
 
@@ -98,4 +100,4 @@ The shared fixture in [Apps/Frameworks/AntDesign/testing/playwright/harnessFixtu
 - `POST /api/harness/messages`
 - `POST /api/harness/downloads/{id}`
 
-The runtime message handlers beyond bootstrap and connection status are left as the next slice of implementation work.
+The runtime now handles server-pushed Ant Design global messages in addition to bootstrap and connection status.
