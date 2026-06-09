@@ -39,7 +39,7 @@ dotnet run --project .\src\PowerShellUniversal.Frameworks.Harness\PowerShellUniv
 
 Then open `http://localhost:5057`.
 
-The default sample definition mounts the Ant Design framework bundle from [Apps/Frameworks/AntDesign/dist](d:/git/powershell-universal-gallery/Apps/Frameworks/AntDesign/dist) and loads a small demo dashboard.
+The default sample definition mounts the Ant Design framework bundle from [Apps/Frameworks/AntDesign/dist](d:/git/powershell-universal-gallery/Apps/Frameworks/AntDesign/dist), resolves the current `manifest.json`, and loads a small demo dashboard without hardcoding hashed asset names.
 
 ## Definition file
 
@@ -58,20 +58,24 @@ The definition script returns a hashtable with these keys:
 Example:
 
 ```powershell
+$antDesignDistPath = Join-Path $PSScriptRoot '..\..\AntDesign\dist'
+$antDesignAssetBasePath = '/frameworks/ant-design'
+$antDesignEntryPoint = Get-AntDesignHarnessEntryPoint -DistPath $antDesignDistPath -BasePath $antDesignAssetBasePath
+
 @{
     DashboardScript = Join-Path $PSScriptRoot 'dashboard.ps1'
     EndpointRoot = Join-Path $PSScriptRoot 'endpoints'
     StaticAssets = @(
         @{
-            RequestPath = '/frameworks/ant-design'
-            Path = (Join-Path $PSScriptRoot '..\..\AntDesign\dist')
+            RequestPath = $antDesignAssetBasePath
+            Path = $antDesignDistPath
         }
     )
     Shell = @{
         Title = 'PSU Framework Harness'
         MountId = 'root'
-        Scripts = @('/frameworks/ant-design/assets/antdesign-framework.js')
-        Styles = @('/frameworks/ant-design/assets/antdesign-framework.css')
+        Scripts = $antDesignEntryPoint.Scripts
+        Styles = $antDesignEntryPoint.Styles
     }
 }
 ```

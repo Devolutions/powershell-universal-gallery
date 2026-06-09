@@ -6,19 +6,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    manifest: 'manifest.json',
     sourcemap: true,
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/antdesign-framework.js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: ({ name }) => {
-          if (name?.endsWith('.css')) {
-            return 'assets/antdesign-framework.css';
-          }
-
-          return 'assets/[name]-[hash][extname]';
-        },
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/chunks/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },

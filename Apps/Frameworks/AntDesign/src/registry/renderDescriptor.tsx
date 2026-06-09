@@ -1,4 +1,4 @@
-import { Fragment, isValidElement, type ReactNode } from 'react';
+import { Fragment, Suspense, isValidElement, type ReactNode } from 'react';
 import { getRegisteredComponent } from './components';
 import { UnknownComponent } from '../components/UnknownComponent';
 import type { DashboardDescriptor, DescriptorContent, DashboardPrimitive } from '../types/dashboard';
@@ -45,7 +45,11 @@ export function renderDescriptorNode(node: DescriptorContent): ReactNode {
     return <UnknownComponent {...node} />;
   }
 
-  return <Component key={node.id ?? node.type} {...(node as Record<string, unknown>)} />;
+  return (
+    <Suspense fallback={null}>
+      <Component key={node.id ?? node.type} {...(node as Record<string, unknown>)} />
+    </Suspense>
+  );
 }
 
 export function renderExistingNode(node: ReactNode): ReactNode {
