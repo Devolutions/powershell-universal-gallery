@@ -13,6 +13,7 @@ function New-AntDesignDemo {
             Get-AntDesignComponentDocumentation -Key 'checkbox' -Title 'Checkbox' -CommandName 'New-UDAntDesignCheckbox' -Category 'Data Entry' -SourceUrl 'https://ant.design/components/checkbox'
             Get-AntDesignComponentDocumentation -Key 'grid' -Title 'Grid' -CommandName 'New-UDAntDesignRow' -Category 'Layout' -SourceUrl 'https://ant.design/components/grid/'
             Get-AntDesignComponentDocumentation -Key 'input' -Title 'Input' -CommandName 'New-UDAntDesignInput' -Category 'Data Entry' -SourceUrl 'https://ant.design/components/input'
+            Get-AntDesignComponentDocumentation -Key 'layout' -Title 'Layout' -CommandName 'New-UDAntDesignLayout' -Category 'Layout' -SourceUrl 'https://ant.design/components/layout/'
             Get-AntDesignComponentDocumentation -Key 'rate' -Title 'Rate' -CommandName 'New-UDAntDesignRate' -Category 'Data Entry' -SourceUrl 'https://ant.design/components/rate'
             Get-AntDesignComponentDocumentation -Key 'switch' -Title 'Switch' -CommandName 'New-UDAntDesignSwitch' -Category 'Data Entry' -SourceUrl 'https://ant.design/components/switch'
             Get-AntDesignComponentDocumentation -Key 'typography' -Title 'Typography' -CommandName 'New-UDAntDesignTypography' -SourceUrl 'https://ant.design/components/typography'

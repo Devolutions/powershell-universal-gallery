@@ -4,6 +4,13 @@ import { AntdCheckbox } from '../components/AntdCheckbox';
 import { AntdCol } from '../components/AntdCol';
 import { AntdDocs } from '../components/AntdDocs';
 import { AntdInput } from '../components/AntdInput';
+import {
+  AntdLayout,
+  AntdLayoutContent,
+  AntdLayoutFooter,
+  AntdLayoutHeader,
+  AntdLayoutSider,
+} from '../components/AntdLayout';
 import { AntdRate } from '../components/AntdRate';
 import { AntdRow } from '../components/AntdRow';
 import { AntdText } from '../components/AntdText';
@@ -27,6 +34,11 @@ export function registerBuiltins() {
   registerComponent('antd-col', wrapWithFeatures(AntdCol as RegisteredDashboardComponent));
   registerComponent('antd-docs', wrapWithFeatures(AntdDocs as RegisteredDashboardComponent));
   registerComponent('antd-input', wrapWithFeatures(AntdInput as RegisteredDashboardComponent));
+  registerComponent('antd-layout', wrapWithFeatures(AntdLayout as RegisteredDashboardComponent));
+  registerComponent('antd-layout-content', wrapWithFeatures(AntdLayoutContent as RegisteredDashboardComponent));
+  registerComponent('antd-layout-footer', wrapWithFeatures(AntdLayoutFooter as RegisteredDashboardComponent));
+  registerComponent('antd-layout-header', wrapWithFeatures(AntdLayoutHeader as RegisteredDashboardComponent));
+  registerComponent('antd-layout-sider', wrapWithFeatures(AntdLayoutSider as RegisteredDashboardComponent));
   registerComponent('antd-rate', wrapWithFeatures(AntdRate as RegisteredDashboardComponent));
   registerComponent('antd-row', wrapWithFeatures(AntdRow as RegisteredDashboardComponent));
   registerComponent('antd-switch', wrapWithFeatures(AntdSwitch as RegisteredDashboardComponent));

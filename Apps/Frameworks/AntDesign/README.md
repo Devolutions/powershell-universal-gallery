@@ -50,6 +50,11 @@ Importing the PowerShell module exposes:
 - `New-UDAntDesignCheckbox`
 - `New-UDAntDesignCol`
 - `New-UDAntDesignInput`
+- `New-UDAntDesignLayout`
+- `New-UDAntDesignLayoutContent`
+- `New-UDAntDesignLayoutFooter`
+- `New-UDAntDesignLayoutHeader`
+- `New-UDAntDesignLayoutSider`
 - `New-UDAntDesignRate`
 - `New-UDAntDesignRow`
 - `New-UDAntDesignSwitch`
@@ -83,7 +88,7 @@ Load the module from PowerShell Universal or through the harness runner, then ca
 New-AntDesignDemo
 ```
 
-The default demo now opens an Ant Design-style docs experience. The button, checkbox, grid, input, rate, switch, and typography pages are generated from comment-based help, and the preview cards are rendered by executing those documented examples.
+The default demo now opens an Ant Design-style docs experience. The button, checkbox, grid, input, layout, rate, switch, and typography pages are generated from comment-based help, and the preview cards are rendered by executing those documented examples.
 
 Inside PowerShell Universal, you can use:
 
