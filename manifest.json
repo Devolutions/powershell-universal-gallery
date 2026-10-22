@@ -183,6 +183,12 @@
     "description": "A barcode scanner component for PowerShell universal. Uses your device camera, compatible with mobile devices."
   },
   {
+    "name": "PowerShellUniversal.Component.Chameleon",
+    "version": "1.2.0",
+    "source": "PowerShellGallery",
+    "description": "Theme builder and theme picker components for PowerShell Universal apps, plus a Chameleon app for designing and managing MUI themes."
+  },
+  {
     "name": "PowerShellUniversal.HealthCheck.ExcessiveRunspaces",
     "version": "1.0.0",
     "source": "PowerShellGallery",
